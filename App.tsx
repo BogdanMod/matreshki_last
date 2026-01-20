@@ -160,39 +160,55 @@ function App() {
     <div className="min-h-screen font-sans relative" style={{ backgroundColor: '#FFFACD', color: '#000000', width: '100%', minHeight: '100vh' }}>
       <BurgerMenu onNavigate={scrollToSection} />
       
-      {/* Hero Section - новый дизайн с логотипом и ягодами */}
-      <div style={{ maxWidth: '100%', paddingLeft: '1rem', paddingRight: '1rem', paddingTop: '1.5rem', paddingBottom: '2rem' }}>
-        {/* Логотип с ягодами и текст - вверху слева */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '2rem' }}>
-          <LogoWithBerries />
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+      {/* Hero Section - точная копия дизайна */}
+      <div style={{ 
+        maxWidth: '100%', 
+        paddingLeft: '1.25rem', 
+        paddingRight: '1.25rem', 
+        paddingTop: '1.5rem', 
+        paddingBottom: '2rem',
+        backgroundColor: '#FFFACD'
+      }}>
+        {/* Логотип с ягодами и текст - вверху слева, точно как на изображении */}
+        <div style={{ 
+          display: 'flex', 
+          alignItems: 'flex-start', 
+          gap: '1rem', 
+          marginBottom: '2.5rem'
+        }}>
+          <div style={{ flexShrink: 0, marginTop: '0.25rem' }}>
+            <LogoWithBerries />
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', justifyContent: 'flex-start' }}>
             <h1 style={{ 
-              fontFamily: 'Arial, sans-serif',
-              fontSize: '1.5rem', 
+              fontFamily: 'Arial, Helvetica, sans-serif',
+              fontSize: '1.75rem', 
               fontWeight: 'bold', 
               color: '#000000', 
               margin: 0,
-              lineHeight: '1.2'
+              lineHeight: '1.3',
+              letterSpacing: '-0.02em'
             }}>
               Matreshki&Co
             </h1>
             <p style={{ 
               fontFamily: 'Brush Script MT, cursive',
-              fontSize: '1.25rem', 
+              fontSize: '1.5rem', 
               color: '#000000', 
               margin: 0,
-              marginTop: '0.25rem'
+              marginTop: '0.15rem',
+              fontStyle: 'normal'
             }}>
               Matreshki
             </p>
             <p style={{ 
-              fontFamily: 'Arial, sans-serif',
-              fontSize: '0.625rem', 
+              fontFamily: 'Arial, Helvetica, sans-serif',
+              fontSize: '0.6rem', 
               fontWeight: 'bold', 
-              letterSpacing: '0.1em', 
+              letterSpacing: '0.15em', 
               color: '#000000', 
               margin: 0,
-              marginTop: '0.25rem',
+              marginTop: '0.3rem',
               textTransform: 'uppercase'
             }}>
               WOMEN'S TRAVEL COMPANY
@@ -203,15 +219,15 @@ function App() {
         {/* Три женщины в центре */}
         <ThreeWomen />
 
-        {/* Три карточки туров внизу */}
+        {/* Три карточки туров внизу - точно как на изображении */}
         <div style={{ 
           display: 'flex', 
           flexDirection: 'column', 
-          gap: '1rem', 
-          marginTop: '2rem',
-          paddingBottom: '1rem'
+          gap: '1.25rem', 
+          marginTop: '2.5rem',
+          paddingBottom: '1.5rem'
         }}>
-          {homeTours.map((tour) => (
+          {homeTours.map((tour, index) => (
             <a
               key={tour.id}
               href={tour.url}
@@ -224,10 +240,11 @@ function App() {
                 borderRadius: '12px',
                 overflow: 'hidden',
                 width: '100%',
-                aspectRatio: '16/10',
-                boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+                aspectRatio: index === 0 ? '16/9' : '16/10',
+                boxShadow: '0 3px 10px rgba(0,0,0,0.15)',
                 textDecoration: 'none',
-                display: 'block'
+                display: 'block',
+                backgroundColor: '#f0f0f0'
               }}
             >
               <img 
@@ -236,7 +253,11 @@ function App() {
                 style={{
                   width: '100%',
                   height: '100%',
-                  objectFit: 'cover'
+                  objectFit: 'cover',
+                  display: 'block'
+                }}
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = 'https://via.placeholder.com/400x300?text=' + tour.title;
                 }}
               />
               {tour.title === 'АРХЫЗ' && (
@@ -245,21 +266,31 @@ function App() {
                   top: 0,
                   left: 0,
                   right: 0,
-                  backgroundColor: 'rgba(0, 100, 200, 0.9)',
-                  padding: '0.75rem 1rem',
-                  color: '#FFFFFF'
+                  backgroundColor: 'rgba(30, 100, 200, 0.95)',
+                  padding: '1rem 1.25rem',
+                  color: '#FFFFFF',
+                  fontFamily: 'Arial, sans-serif'
                 }}>
                   <div style={{ 
-                    fontSize: '1.5rem', 
+                    fontSize: '1.75rem', 
                     fontWeight: 'bold',
-                    marginBottom: '0.25rem'
+                    marginBottom: '0.35rem',
+                    lineHeight: '1.2'
                   }}>
                     {tour.title}
                   </div>
-                  <div style={{ fontSize: '0.875rem' }}>
+                  <div style={{ 
+                    fontSize: '0.95rem',
+                    marginBottom: '0.2rem',
+                    opacity: 0.95
+                  }}>
                     {tour.dates}
                   </div>
-                  <div style={{ fontSize: '0.75rem', marginTop: '0.25rem' }}>
+                  <div style={{ 
+                    fontSize: '0.8rem', 
+                    marginTop: '0.15rem',
+                    opacity: 0.9
+                  }}>
                     {tour.subtitle}
                   </div>
                 </div>
