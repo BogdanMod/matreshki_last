@@ -160,7 +160,7 @@ function App() {
     <div className="min-h-screen font-sans relative" style={{ backgroundColor: '#FFFACD', color: '#000000', width: '100%' }}>
       <BurgerMenu onNavigate={scrollToSection} />
       
-      {/* Hero Section - точная копия дизайна */}
+      {/* Hero Section - новый дизайн с логотипом и ягодами */}
       <div style={{ maxWidth: '100%', paddingLeft: '1rem', paddingRight: '1rem', paddingTop: '1.5rem', paddingBottom: '2rem' }}>
         {/* Логотип с ягодами и текст - вверху слева */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '2rem' }}>
