@@ -18,4 +18,9 @@ View your app in AI Studio: https://ai.studio/apps/drive/1s0G8PNEuRruFV6IhXb9YUY
 2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
 3. Run the app:
    `npm run dev`
-# matreshki_last
+# Matreshki&Co Travel Agency
+
+Women's Travel Company - Таплинк для мобильных устройств
+
+## Деплой
+Проект автоматически деплоится на Vercel при пуше в main ветку GitHub.
