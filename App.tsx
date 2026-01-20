@@ -157,7 +157,7 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen font-sans relative" style={{ backgroundColor: '#FFFACD', color: '#000000', width: '100%' }}>
+    <div className="min-h-screen font-sans relative" style={{ backgroundColor: '#FFFACD', color: '#000000', width: '100%', minHeight: '100vh' }}>
       <BurgerMenu onNavigate={scrollToSection} />
       
       {/* Hero Section - новый дизайн с логотипом и ягодами */}
