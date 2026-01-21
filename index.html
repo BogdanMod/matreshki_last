@@ -11,15 +11,8 @@
     <!-- Google Fonts - загружаем асинхронно после загрузки страницы -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <script>
-      // Загружаем шрифты асинхронно после загрузки страницы
-      window.addEventListener('load', function() {
-        const link = document.createElement('link');
-        link.href = 'https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Ruslan+Display&family=Montserrat:wght@300;400;500;600;700&display=swap';
-        link.rel = 'stylesheet';
-        document.head.appendChild(link);
-      });
-    </script>
+    <!-- Google Fonts - загружаем сразу для быстрой загрузки -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Ruslan+Display&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
       * {
         margin: 0;
@@ -59,6 +52,16 @@
       #root {
         width: 100%;
         min-height: 100vh;
+        display: block;
+      }
+      
+      /* Показываем контент сразу, даже если React еще не загрузился */
+      #root:empty::before {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 100vh;
+        background-color: #FFFACD;
       }
       
       /* Custom Scalloped Border Class */
@@ -98,5 +101,11 @@
       <!-- Лоадер будет заменен React компонентом -->
     </div>
     <script type="module" src="/index.tsx"></script>
+    <noscript>
+      <div style="padding: 2rem; text-align: center; background: #FFFACD; min-height: 100vh;">
+        <h1 style="color: #000; font-size: 2rem; margin-bottom: 1rem;">Matreshki&Co</h1>
+        <p style="color: #000;">Для работы сайта требуется JavaScript. Пожалуйста, включите его в настройках браузера.</p>
+      </div>
+    </noscript>
 </body>
 </html>

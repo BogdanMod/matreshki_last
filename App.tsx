@@ -100,19 +100,25 @@ function App() {
   
   useEffect(() => {
     // Синхронная детекция устройства для мгновенного рендера
-    const userAgent = navigator.userAgent || navigator.vendor || (window as any).opera;
-    const isMobileDevice = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent.toLowerCase());
-    const isSmallScreen = window.innerWidth <= 768;
-    const mobile = isMobileDevice || isSmallScreen;
-    
-    setIsMobile(mobile);
-    
-    // Минимальная задержка для показа лоадера
-    const timer = setTimeout(() => {
+    try {
+      const userAgent = navigator.userAgent || navigator.vendor || (window as any).opera || '';
+      const isMobileDevice = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent.toLowerCase());
+      const isSmallScreen = window.innerWidth <= 768;
+      const mobile = isMobileDevice || isSmallScreen;
+      
+      setIsMobile(mobile);
+      
+      // Минимальная задержка для показа лоадера
+      const timer = setTimeout(() => {
+        setIsLoading(false);
+      }, 500);
+      
+      return () => clearTimeout(timer);
+    } catch (error) {
+      // Fallback: если что-то пошло не так, считаем мобильным
+      setIsMobile(true);
       setIsLoading(false);
-    }, 800);
-    
-    return () => clearTimeout(timer);
+    }
   }, []);
 
   const aboutRef = useRef<HTMLDivElement>(null);
@@ -177,7 +183,7 @@ function App() {
         }}>
           <div style={{ flexShrink: 0, marginTop: '0.25rem' }}>
             <LogoWithBerries />
-          </div>
+           </div>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', justifyContent: 'flex-start' }}>
             <h1 style={{ 
               fontFamily: 'Arial, Helvetica, sans-serif',
@@ -212,7 +218,7 @@ function App() {
             }}>
               WOMEN'S TRAVEL COMPANY
             </p>
-          </div>
+           </div>
         </div>
 
         {/* Три карточки туров внизу - точно как на изображении */}
@@ -281,15 +287,15 @@ function App() {
                     opacity: 0.95
                   }}>
                     {tour.dates}
-                  </div>
+             </div>
                   <div style={{ 
                     fontSize: '0.8rem', 
                     marginTop: '0.15rem',
                     opacity: 0.9
                   }}>
                     {tour.subtitle}
-                  </div>
-                </div>
+           </div>
+        </div>
               )}
             </a>
           ))}
@@ -322,7 +328,7 @@ function App() {
               в компании единомышленниц, которые ценят красоту, культуру и настоящие эмоции.
             </p>
           </div>
-        </div>
+      </div>
       </section>
 
       <SectionDivider />
@@ -514,7 +520,7 @@ function App() {
               Связаться с нами
             </button>
           </div>
-        </div>
+             </div>
       </section>
 
       <SectionDivider />
@@ -563,7 +569,7 @@ function App() {
         </div>
       </section>
 
-      {/* Footer */}
+          {/* Footer */}
       <footer className="bg-folk-red py-8 px-6" style={{ backgroundColor: '#B83D3F' }}>
         <div className="max-w-md mx-auto text-center" style={{ maxWidth: '100%', paddingLeft: '1.5rem', paddingRight: '1.5rem' }}>
           <div className="flex justify-center gap-6 mb-4" style={{ color: '#000000' }}>
@@ -585,10 +591,10 @@ function App() {
             >
               <Send size={20} />
             </a>
-          </div>
+             </div>
           <p className="text-[10px] uppercase tracking-widest" style={{ color: 'rgba(0, 0, 0, 0.6)' }}>
-            © 2025 Matreshki Co.
-          </p>
+               © 2025 Matreshki Co.
+             </p>
         </div>
       </footer>
     </div>
