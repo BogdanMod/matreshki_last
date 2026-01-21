@@ -118,6 +118,14 @@
 <script type="module" src="/index.tsx"></script>
 </head>
   <body>
+    <script>
+      // Самый ранний лог - выполняется до всего
+      alert('HTML script executed! Check console.');
+      console.log('[EARLY] HTML body script executed');
+      console.log('[EARLY] Document readyState:', document.readyState);
+      console.log('[EARLY] Window:', typeof window);
+      console.log('[EARLY] Console:', typeof console);
+    </script>
     <div id="root">
       <!-- Встроенный лоадер до загрузки React -->
       <div class="initial-loader">
@@ -133,19 +141,31 @@
       </div>
     </div>
     <script>
-      // Логирование загрузки страницы
-      console.log('[HTML] Page loaded, readyState:', document.readyState);
-      console.log('[HTML] Script tag about to load module');
-      
-      // Отслеживаем ошибки загрузки модулей
-      window.addEventListener('error', function(e) {
-        console.error('[HTML] Script error:', e.message, e.filename, e.lineno);
-      }, true);
-      
-      // Отслеживаем загрузку ресурсов
-      window.addEventListener('load', function() {
-        console.log('[HTML] All resources loaded');
-      });
+      // Логирование загрузки страницы - выполняется сразу
+      (function() {
+        console.log('[HTML] Inline script executed');
+        console.log('[HTML] Page loaded, readyState:', document.readyState);
+        console.log('[HTML] Script tag about to load module');
+        
+        // Отслеживаем ошибки загрузки модулей
+        window.addEventListener('error', function(e) {
+          console.error('[HTML] Script error:', e.message, e.filename, e.lineno, e.error);
+        }, true);
+        
+        // Отслеживаем загрузку ресурсов
+        window.addEventListener('load', function() {
+          console.log('[HTML] All resources loaded');
+        });
+        
+        // Проверяем, загрузился ли модуль через некоторое время
+        setTimeout(function() {
+          var scripts = document.querySelectorAll('script[type="module"]');
+          console.log('[HTML] Found module scripts:', scripts.length);
+          scripts.forEach(function(script, index) {
+            console.log('[HTML] Script ' + index + ':', script.src || script.textContent.substring(0, 50));
+          });
+        }, 1000);
+      })();
     </script>
     <noscript>
       <div style="padding: 2rem; text-align: center; background: #FFFACD; min-height: 100vh;">
