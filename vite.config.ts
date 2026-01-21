@@ -13,14 +13,31 @@ export default defineConfig(({ mode }) => {
       plugins: [
         react(),
         {
-          name: 'remove-crossorigin',
+          name: 'remove-crossorigin-and-move-script',
           closeBundle() {
-            // Удаляем crossorigin из собранного HTML
+            // Удаляем crossorigin и перемещаем скрипт в body
             const htmlPath = path.resolve(__dirname, 'dist/index.html');
             if (fs.existsSync(htmlPath)) {
               let html = fs.readFileSync(htmlPath, 'utf-8');
+              // Удаляем crossorigin
               html = html.replace(/\s+crossorigin/g, '');
+              // Находим скрипт модуля в head
+              const scriptMatch = html.match(/<script type="module"[^>]*src="([^"]+)"[^>]*><\/script>/);
+              if (scriptMatch) {
+                const scriptSrc = scriptMatch[1];
+                // Удаляем скрипт из head
+                html = html.replace(/<script type="module"[^>]*src="[^"]+"[^>]*><\/script>\s*/g, '');
+                // Добавляем скрипт перед закрывающим тегом body
+                html = html.replace('</body>', `<script type="module" src="${scriptSrc}"></script>\n</body>`);
+              }
               fs.writeFileSync(htmlPath, html, 'utf-8');
+            }
+            
+            // Копируем _redirects файл для Cloudflare Pages
+            const redirectsPath = path.resolve(__dirname, '_redirects');
+            const distRedirectsPath = path.resolve(__dirname, 'dist/_redirects');
+            if (fs.existsSync(redirectsPath)) {
+              fs.copyFileSync(redirectsPath, distRedirectsPath);
             }
           }
         }

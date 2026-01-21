@@ -115,7 +115,6 @@
       }
     </style>
 <link rel="stylesheet" href="/index.css">
-<script type="module" src="/index.tsx"></script>
 </head>
   <body>
     <script>
@@ -167,6 +166,8 @@
         }, 1000);
       })();
     </script>
+    <!-- Загружаем модуль динамически в body для совместимости с мобильными Safari -->
+    <script type="module" src="/index.tsx"></script>
     <noscript>
       <div style="padding: 2rem; text-align: center; background: #FFFACD; min-height: 100vh;">
         <h1 style="color: #000; font-size: 2rem; margin-bottom: 1rem;">Matreshki&Co</h1>
