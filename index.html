@@ -55,13 +55,68 @@
         display: block;
       }
       
-      /* Показываем контент сразу, даже если React еще не загрузился */
-      #root:empty::before {
-        content: '';
-        display: block;
-        width: 100%;
-        height: 100vh;
-        background-color: #FFFACD;
+      /* Встроенный лоадер до загрузки React */
+      #root:empty {
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background-color: #F7F4EB !important;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 9999;
+      }
+      
+      #root:empty::after {
+        content: 'Matreshki&Co';
+        font-family: Georgia, serif;
+        font-size: 2rem;
+        font-weight: bold;
+        color: #1F2E4D;
+        margin-top: 1rem;
+        animation: fadeIn 0.5s ease-in;
+      }
+      
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      
+      @keyframes pulse {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.6; transform: scale(0.95); }
+      }
+      
+      .initial-loader {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background-color: #F7F4EB;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 9999;
+      }
+      
+      .initial-loader-spinner {
+        width: 50px;
+        height: 50px;
+        border: 4px solid #1F2E4D;
+        border-top-color: #9E2A2B;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+      
+      @keyframes spin {
+        to { transform: rotate(360deg); }
       }
       
       /* Custom Scalloped Border Class */
@@ -98,7 +153,18 @@
 </head>
   <body>
     <div id="root">
-      <!-- Лоадер будет заменен React компонентом -->
+      <!-- Встроенный лоадер до загрузки React -->
+      <div class="initial-loader">
+        <div class="initial-loader-spinner"></div>
+        <div style="margin-top: 1.5rem; text-align: center;">
+          <h1 style="font-family: Georgia, serif; font-size: 2rem; font-weight: bold; color: #1F2E4D; margin-bottom: 0.5rem;">
+            Matreshki<span style="font-style: italic; font-size: 1.5rem;">&</span>Co
+          </h1>
+          <p style="font-family: 'Brush Script MT', cursive; font-size: 1.25rem; color: rgba(31, 46, 77, 0.8); transform: rotate(-2deg);">
+            Matreshi
+          </p>
+        </div>
+      </div>
     </div>
     <script type="module" src="/index.tsx"></script>
     <noscript>

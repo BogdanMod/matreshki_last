@@ -8,12 +8,15 @@ export const Loader: React.FC = () => {
       left: 0,
       right: 0,
       bottom: 0,
+      width: '100%',
+      height: '100%',
       backgroundColor: '#F7F4EB',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'center',
-      zIndex: 9999
+      zIndex: 99999,
+      overflow: 'hidden'
     }}>
       {/* Анимированные цветы */}
       <div style={{ position: 'relative', width: '120px', height: '120px', marginBottom: '2rem' }}>

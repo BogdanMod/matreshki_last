@@ -99,6 +99,12 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   
   useEffect(() => {
+    // Удаляем встроенный лоадер из HTML
+    const initialLoader = document.querySelector('.initial-loader');
+    if (initialLoader) {
+      initialLoader.remove();
+    }
+    
     // Синхронная детекция устройства для мгновенного рендера
     try {
       const userAgent = navigator.userAgent || navigator.vendor || (window as any).opera || '';
@@ -111,7 +117,7 @@ function App() {
       // Минимальная задержка для показа лоадера
       const timer = setTimeout(() => {
         setIsLoading(false);
-      }, 500);
+      }, 300);
       
       return () => clearTimeout(timer);
     } catch (error) {
