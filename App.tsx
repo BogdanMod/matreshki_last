@@ -103,6 +103,28 @@ function App() {
   
   const [isMobile] = useState<boolean>(initialMobile);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  
+  // Перехватываем ошибки
+  useEffect(() => {
+    const handleError = (event: ErrorEvent) => {
+      console.error('Error caught:', event.error);
+      setError(event.error?.message || 'Произошла ошибка');
+    };
+    
+    const handleUnhandledRejection = (event: PromiseRejectionEvent) => {
+      console.error('Unhandled rejection:', event.reason);
+      setError(event.reason?.message || 'Ошибка загрузки');
+    };
+    
+    window.addEventListener('error', handleError);
+    window.addEventListener('unhandledrejection', handleUnhandledRejection);
+    
+    return () => {
+      window.removeEventListener('error', handleError);
+      window.removeEventListener('unhandledrejection', handleUnhandledRejection);
+    };
+  }, []);
   
   useEffect(() => {
     // Минимальная задержка для показа лоадера
@@ -142,6 +164,42 @@ function App() {
       <div className="lace-decoration absolute top-1 left-0 w-full z-20 opacity-50"></div>
     </div>
   );
+
+  // Показываем ошибку, если она есть
+  if (error) {
+    return (
+      <div style={{
+        padding: '2rem',
+        textAlign: 'center',
+        background: '#FFFACD',
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center'
+      }}>
+        <h1 style={{ color: '#000', fontSize: '1.5rem', marginBottom: '1rem' }}>Ошибка</h1>
+        <p style={{ color: '#B83D3F', marginBottom: '1rem', fontSize: '0.9rem', wordBreak: 'break-word' }}>{error}</p>
+        <button
+          onClick={() => {
+            setError(null);
+            window.location.reload();
+          }}
+          style={{
+            padding: '0.75rem 1.5rem',
+            background: '#B83D3F',
+            color: 'white',
+            border: 'none',
+            borderRadius: '8px',
+            cursor: 'pointer',
+            fontSize: '1rem'
+          }}
+        >
+          Перезагрузить
+        </button>
+      </div>
+    );
+  }
 
   // Show loader только во время загрузки
   if (isLoading) {
