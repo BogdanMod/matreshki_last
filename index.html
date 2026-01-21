@@ -119,11 +119,25 @@
   <body>
     <script>
       // Самый ранний лог - выполняется до всего
-      alert('HTML script executed! Check console.');
       console.log('[EARLY] HTML body script executed');
       console.log('[EARLY] Document readyState:', document.readyState);
       console.log('[EARLY] Window:', typeof window);
       console.log('[EARLY] Console:', typeof console);
+      
+      // Проверяем загрузку модуля
+      window.addEventListener('load', function() {
+        console.log('[EARLY] Page loaded, checking module script...');
+        const moduleScript = document.querySelector('script[type="module"]');
+        if (moduleScript) {
+          console.log('[EARLY] Module script found:', moduleScript.src);
+          moduleScript.addEventListener('error', function(e) {
+            console.error('[EARLY] Module script error:', e);
+            alert('Ошибка загрузки модуля: ' + (e.message || 'Неизвестная ошибка'));
+          });
+        } else {
+          console.error('[EARLY] Module script not found!');
+        }
+      });
     </script>
     <div id="root">
       <!-- Встроенный лоадер до загрузки React -->
