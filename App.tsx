@@ -95,22 +95,20 @@ const FolkFlower = ({ className }: { className?: string }) => (
 );
 
 function App() {
-  const [isMobile, setIsMobile] = useState<boolean | null>(null);
+  // Определяем мобильное устройство сразу при инициализации
+  const userAgent = typeof navigator !== 'undefined' ? (navigator.userAgent || navigator.vendor || (window as any).opera || '') : '';
+  const isMobileDevice = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent.toLowerCase());
+  const isSmallScreen = typeof window !== 'undefined' && window.innerWidth <= 768;
+  const initialMobile = isMobileDevice || isSmallScreen;
+  
+  const [isMobile] = useState<boolean>(initialMobile);
   const [isLoading, setIsLoading] = useState(true);
   
   useEffect(() => {
-    // Синхронная детекция устройства для мгновенного рендера
-    const userAgent = navigator.userAgent || navigator.vendor || (window as any).opera || '';
-    const isMobileDevice = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent.toLowerCase());
-    const isSmallScreen = window.innerWidth <= 768;
-    const mobile = isMobileDevice || isSmallScreen;
-    
-    setIsMobile(mobile);
-    
     // Минимальная задержка для показа лоадера
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 200);
+    }, 300);
     
     return () => clearTimeout(timer);
   }, []);
@@ -145,8 +143,8 @@ function App() {
     </div>
   );
 
-  // Show loader
-  if (isLoading || isMobile === null) {
+  // Show loader только во время загрузки
+  if (isLoading) {
     return <Loader />;
   }
 
