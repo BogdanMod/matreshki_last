@@ -53,42 +53,7 @@
         width: 100%;
         min-height: 100vh;
         display: block;
-      }
-      
-      /* Встроенный лоадер до загрузки React */
-      #root:empty {
-        display: flex !important;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        min-height: 100vh;
-        background-color: #F7F4EB !important;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: 9999;
-      }
-      
-      #root:empty::after {
-        content: 'Matreshki&Co';
-        font-family: Georgia, serif;
-        font-size: 2rem;
-        font-weight: bold;
-        color: #1F2E4D;
-        margin-top: 1rem;
-        animation: fadeIn 0.5s ease-in;
-      }
-      
-      @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
-      }
-      
-      @keyframes pulse {
-        0%, 100% { opacity: 1; transform: scale(1); }
-        50% { opacity: 0.6; transform: scale(0.95); }
+        background-color: #F7F4EB;
       }
       
       .initial-loader {
@@ -97,13 +62,13 @@
         align-items: center;
         justify-content: center;
         min-height: 100vh;
+        width: 100%;
         background-color: #F7F4EB;
-        position: fixed;
+        position: absolute;
         top: 0;
         left: 0;
         right: 0;
-        bottom: 0;
-        z-index: 9999;
+        z-index: 99999;
       }
       
       .initial-loader-spinner {

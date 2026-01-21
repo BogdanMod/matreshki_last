@@ -99,32 +99,20 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   
   useEffect(() => {
-    // Удаляем встроенный лоадер из HTML
-    const initialLoader = document.querySelector('.initial-loader');
-    if (initialLoader) {
-      initialLoader.remove();
-    }
-    
     // Синхронная детекция устройства для мгновенного рендера
-    try {
-      const userAgent = navigator.userAgent || navigator.vendor || (window as any).opera || '';
-      const isMobileDevice = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent.toLowerCase());
-      const isSmallScreen = window.innerWidth <= 768;
-      const mobile = isMobileDevice || isSmallScreen;
-      
-      setIsMobile(mobile);
-      
-      // Минимальная задержка для показа лоадера
-      const timer = setTimeout(() => {
-        setIsLoading(false);
-      }, 300);
-      
-      return () => clearTimeout(timer);
-    } catch (error) {
-      // Fallback: если что-то пошло не так, считаем мобильным
-      setIsMobile(true);
+    const userAgent = navigator.userAgent || navigator.vendor || (window as any).opera || '';
+    const isMobileDevice = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent.toLowerCase());
+    const isSmallScreen = window.innerWidth <= 768;
+    const mobile = isMobileDevice || isSmallScreen;
+    
+    setIsMobile(mobile);
+    
+    // Минимальная задержка для показа лоадера
+    const timer = setTimeout(() => {
       setIsLoading(false);
-    }
+    }, 200);
+    
+    return () => clearTimeout(timer);
   }, []);
 
   const aboutRef = useRef<HTMLDivElement>(null);
