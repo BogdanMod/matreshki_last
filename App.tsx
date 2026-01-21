@@ -17,7 +17,6 @@ import { BurgerMenu } from './components/BurgerMenu';
 import { DesktopMessage } from './components/DesktopMessage';
 import { Loader } from './components/Loader';
 import { LogoWithBerries } from './components/LogoWithBerries';
-import { ThreeWomen } from './components/ThreeWomen';
 import { LinkItem } from './types';
 
 const homeTours = [
