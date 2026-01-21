@@ -95,11 +95,18 @@ const FolkFlower = ({ className }: { className?: string }) => (
 );
 
 function App() {
+  console.log('[APP] App component rendering...');
+  
   // Определяем мобильное устройство сразу при инициализации
   const userAgent = typeof navigator !== 'undefined' ? (navigator.userAgent || navigator.vendor || (window as any).opera || '') : '';
   const isMobileDevice = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent.toLowerCase());
   const isSmallScreen = typeof window !== 'undefined' && window.innerWidth <= 768;
   const initialMobile = isMobileDevice || isSmallScreen;
+  
+  console.log('[APP] User agent:', userAgent);
+  console.log('[APP] Is mobile device:', isMobileDevice);
+  console.log('[APP] Is small screen:', isSmallScreen);
+  console.log('[APP] Initial mobile:', initialMobile);
   
   const [isMobile] = useState<boolean>(initialMobile);
   const [isLoading, setIsLoading] = useState(true);
@@ -127,12 +134,17 @@ function App() {
   }, []);
   
   useEffect(() => {
+    console.log('[APP] useEffect triggered, isLoading:', isLoading);
     // Минимальная задержка для показа лоадера
     const timer = setTimeout(() => {
+      console.log('[APP] Setting isLoading to false');
       setIsLoading(false);
     }, 300);
     
-    return () => clearTimeout(timer);
+    return () => {
+      console.log('[APP] Cleaning up timer');
+      clearTimeout(timer);
+    };
   }, []);
 
   const aboutRef = useRef<HTMLDivElement>(null);
@@ -165,8 +177,11 @@ function App() {
     </div>
   );
 
+  console.log('[APP] Render check - error:', error, 'isLoading:', isLoading, 'isMobile:', isMobile);
+  
   // Показываем ошибку, если она есть
   if (error) {
+    console.log('[APP] Rendering error screen');
     return (
       <div style={{
         padding: '2rem',
@@ -203,13 +218,17 @@ function App() {
 
   // Show loader только во время загрузки
   if (isLoading) {
+    console.log('[APP] Rendering loader');
     return <Loader />;
   }
 
   // Show desktop message if not mobile
   if (!isMobile) {
+    console.log('[APP] Rendering desktop message');
     return <DesktopMessage />;
   }
+
+  console.log('[APP] Rendering main content');
 
   return (
     <div className="min-h-screen font-sans relative" style={{ backgroundColor: '#FFFACD', color: '#000000', width: '100%', minHeight: '100vh' }}>

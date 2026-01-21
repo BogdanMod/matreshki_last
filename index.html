@@ -131,7 +131,21 @@
         </div>
       </div>
     </div>
-    <script type="module" src="/index.tsx"></script>
+    <script>
+      // Логирование загрузки страницы
+      console.log('[HTML] Page loaded, readyState:', document.readyState);
+      console.log('[HTML] Script tag about to load module');
+      
+      // Отслеживаем ошибки загрузки модулей
+      window.addEventListener('error', function(e) {
+        console.error('[HTML] Script error:', e.message, e.filename, e.lineno);
+      }, true);
+      
+      // Отслеживаем загрузку ресурсов
+      window.addEventListener('load', function() {
+        console.log('[HTML] All resources loaded');
+      });
+    </script>
     <noscript>
       <div style="padding: 2rem; text-align: center; background: #FFFACD; min-height: 100vh;">
         <h1 style="color: #000; font-size: 2rem; margin-bottom: 1rem;">Matreshki&Co</h1>
