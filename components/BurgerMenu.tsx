@@ -28,8 +28,8 @@ export const BurgerMenu: React.FC<BurgerMenuProps> = ({ onNavigate }) => {
         onClick={() => setIsOpen(!isOpen)}
         className="fixed top-6 right-6 z-50 bg-folk-red text-folk-cream p-3 rounded-full shadow-lg hover:bg-red-800 transition-all"
         style={{ 
-          backgroundColor: '#FFFACD', 
-          color: '#000000', 
+          backgroundColor: '#B83D3F', 
+          color: '#FFFFFF', 
           position: 'fixed', 
           top: '1.5rem', 
           right: '1.5rem', 

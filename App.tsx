@@ -241,7 +241,7 @@ function App() {
         paddingRight: '1.25rem', 
         paddingTop: '5rem', 
         paddingBottom: '2rem',
-        backgroundColor: '#FFFFFF',
+        backgroundColor: '#FFFACD',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center'
@@ -647,15 +647,15 @@ function App() {
       </section>
 
           {/* Footer */}
-      <footer className="bg-folk-red py-8 px-6" style={{ backgroundColor: '#FFFACD' }}>
+      <footer className="bg-folk-red py-8 px-6" style={{ backgroundColor: '#1F2E4D' }}>
         <div className="max-w-md mx-auto text-center" style={{ maxWidth: '100%', paddingLeft: '1.5rem', paddingRight: '1.5rem' }}>
-          <div className="flex justify-center gap-6 mb-4" style={{ color: '#000000' }}>
+          <div className="flex justify-center gap-6 mb-4" style={{ color: '#F7F4EB' }}>
             <a 
               href="https://instagram.com/matreshkico" 
               target="_blank"
               rel="noopener noreferrer"
               className="hover:opacity-70 transition-opacity"
-              style={{ color: '#000000' }}
+              style={{ color: '#F7F4EB' }}
             >
               <Instagram size={20} />
             </a>
@@ -664,12 +664,12 @@ function App() {
               target="_blank"
               rel="noopener noreferrer"
               className="hover:opacity-70 transition-opacity"
-              style={{ color: '#000000' }}
+              style={{ color: '#F7F4EB' }}
             >
               <Send size={20} />
             </a>
              </div>
-          <p className="text-[10px] uppercase tracking-widest" style={{ color: 'rgba(0, 0, 0, 0.6)' }}>
+          <p className="text-[10px] uppercase tracking-widest" style={{ color: 'rgba(247, 244, 235, 0.6)' }}>
                © 2025 Matreshki Co.
              </p>
         </div>
