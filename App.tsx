@@ -239,9 +239,12 @@ function App() {
         maxWidth: '100%', 
         paddingLeft: '1.25rem', 
         paddingRight: '1.25rem', 
-        paddingTop: '3rem', 
+        paddingTop: '5rem', 
         paddingBottom: '2rem',
-        backgroundColor: '#FFFACD'
+        backgroundColor: '#FFFACD',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center'
       }}>
         {/* Логотип с ягодами и текст - по центру */}
         <div style={{ 
@@ -249,7 +252,8 @@ function App() {
           alignItems: 'center', 
           justifyContent: 'center',
           gap: '1rem', 
-          marginBottom: '2.5rem'
+          marginBottom: '2.5rem',
+          width: '100%'
         }}>
           <div style={{ flexShrink: 0 }}>
             <LogoWithBerries />
@@ -262,7 +266,8 @@ function App() {
               color: '#000000', 
               margin: 0,
               lineHeight: '1.3',
-              letterSpacing: '-0.02em'
+              letterSpacing: '-0.02em',
+              textAlign: 'center'
             }}>
               Matreshki&Co
             </h1>
@@ -272,7 +277,8 @@ function App() {
               color: '#000000', 
               margin: 0,
               marginTop: '0.15rem',
-              fontStyle: 'normal'
+              fontStyle: 'normal',
+              textAlign: 'center'
             }}>
               Matreshki
             </p>
@@ -284,7 +290,8 @@ function App() {
               color: '#000000', 
               margin: 0,
               marginTop: '0.3rem',
-              textTransform: 'uppercase'
+              textTransform: 'uppercase',
+              textAlign: 'center'
             }}>
               WOMEN'S TRAVEL COMPANY
             </p>
