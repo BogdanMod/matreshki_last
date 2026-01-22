@@ -17,7 +17,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
-  background-color: #FFFACD;
+  background-color: #FFFFFF;
   color: #000000;
   width: 100%;
   min-height: 100vh;
@@ -34,7 +34,7 @@ body {
 }
 
 .bg-folk-red {
-  background-color: #B83D3F !important;
+  background-color: #FFFACD !important;
 }
 
 .bg-folk-blue {

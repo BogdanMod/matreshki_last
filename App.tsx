@@ -186,7 +186,7 @@ function App() {
       <div style={{
         padding: '2rem',
         textAlign: 'center',
-        background: '#FFFACD',
+        background: '#FFFFFF',
         minHeight: '100vh',
         display: 'flex',
         flexDirection: 'column',
@@ -194,7 +194,7 @@ function App() {
         justifyContent: 'center'
       }}>
         <h1 style={{ color: '#000', fontSize: '1.5rem', marginBottom: '1rem' }}>Ошибка</h1>
-        <p style={{ color: '#B83D3F', marginBottom: '1rem', fontSize: '0.9rem', wordBreak: 'break-word' }}>{error}</p>
+        <p style={{ color: '#FFFACD', marginBottom: '1rem', fontSize: '0.9rem', wordBreak: 'break-word' }}>{error}</p>
         <button
           onClick={() => {
             setError(null);
@@ -202,7 +202,7 @@ function App() {
           }}
           style={{
             padding: '0.75rem 1.5rem',
-            background: '#B83D3F',
+            background: '#FFFACD',
             color: 'white',
             border: 'none',
             borderRadius: '8px',
@@ -231,7 +231,7 @@ function App() {
   console.log('[APP] Rendering main content');
 
   return (
-    <div className="min-h-screen font-sans relative" style={{ backgroundColor: '#FFFACD', color: '#000000', width: '100%', minHeight: '100vh' }}>
+    <div className="min-h-screen font-sans relative" style={{ backgroundColor: '#FFFFFF', color: '#000000', width: '100%', minHeight: '100vh' }}>
       <BurgerMenu onNavigate={scrollToSection} />
       
       {/* Hero Section - точная копия дизайна */}
@@ -241,7 +241,7 @@ function App() {
         paddingRight: '1.25rem', 
         paddingTop: '5rem', 
         paddingBottom: '2rem',
-        backgroundColor: '#FFFACD',
+        backgroundColor: '#FFFFFF',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center'
@@ -382,7 +382,7 @@ function App() {
       <SectionDivider />
 
       {/* О нас */}
-      <section ref={aboutRef} id="about" className="bg-folk-red px-6" style={{ backgroundColor: '#B83D3F', paddingTop: '5rem', paddingBottom: '5rem' }}>
+      <section ref={aboutRef} id="about" className="bg-folk-red px-6" style={{ backgroundColor: '#FFFACD', paddingTop: '5rem', paddingBottom: '5rem' }}>
         <div className="max-w-md mx-auto" style={{ maxWidth: '100%', paddingLeft: '1.5rem', paddingRight: '1.5rem' }}>
           <h2 className="font-display text-3xl mb-8 text-center" style={{ marginBottom: '3rem', color: '#000000' }}>О НАС</h2>
           <div className="space-y-6 text-base leading-relaxed" style={{ fontSize: '1rem', lineHeight: '1.75', color: '#000000' }}>
@@ -411,7 +411,7 @@ function App() {
       <SectionDivider />
 
       {/* Об авторе */}
-      <section ref={authorRef} id="author" className="bg-folk-cream px-6" style={{ backgroundColor: '#F7F4EB', paddingTop: '5rem', paddingBottom: '5rem' }}>
+      <section ref={authorRef} id="author" className="bg-folk-cream px-6" style={{ backgroundColor: '#FFFFFF', paddingTop: '5rem', paddingBottom: '5rem' }}>
         <div className="max-w-md mx-auto" style={{ maxWidth: '100%', paddingLeft: '1.5rem', paddingRight: '1.5rem' }}>
           <h2 className="font-display text-3xl text-folk-blue mb-8 text-center" style={{ marginBottom: '3rem' }}>ОБ АВТОРЕ</h2>
           <div className="flex flex-col items-center mb-10" style={{ marginBottom: '3rem' }}>
@@ -454,12 +454,12 @@ function App() {
       <SectionDivider />
 
       {/* Почему именно мы */}
-      <section ref={whyUsRef} id="why-us" className="bg-folk-red px-6" style={{ backgroundColor: '#B83D3F', paddingTop: '5rem', paddingBottom: '5rem' }}>
+      <section ref={whyUsRef} id="why-us" className="bg-folk-red px-6" style={{ backgroundColor: '#FFFACD', paddingTop: '5rem', paddingBottom: '5rem' }}>
         <div className="max-w-md mx-auto" style={{ maxWidth: '100%', paddingLeft: '1.5rem', paddingRight: '1.5rem' }}>
           <h2 className="font-display text-3xl mb-10 text-center" style={{ marginBottom: '3rem', color: '#000000' }}>ПОЧЕМУ ИМЕННО МЫ</h2>
           <div className="space-y-8" style={{ gap: '2.5rem' }}>
             <div className="flex items-start gap-5" style={{ gap: '1.5rem' }}>
-              <div className="bg-folk-cream p-4 rounded-full flex-shrink-0" style={{ padding: '1rem', backgroundColor: '#F7F4EB' }}>
+              <div className="bg-folk-cream p-4 rounded-full flex-shrink-0" style={{ padding: '1rem', backgroundColor: '#FFFFFF' }}>
                 <Heart size={28} style={{ color: '#000000' }} />
               </div>
               <div className="text-base" style={{ fontSize: '1rem', lineHeight: '1.75', color: '#000000' }}>
@@ -470,7 +470,7 @@ function App() {
               </div>
             </div>
             <div className="flex items-start gap-5" style={{ gap: '1.5rem' }}>
-              <div className="bg-folk-cream p-4 rounded-full flex-shrink-0" style={{ padding: '1rem', backgroundColor: '#F7F4EB' }}>
+              <div className="bg-folk-cream p-4 rounded-full flex-shrink-0" style={{ padding: '1rem', backgroundColor: '#FFFFFF' }}>
                 <Users size={28} style={{ color: '#000000' }} />
               </div>
               <div className="text-base" style={{ fontSize: '1rem', lineHeight: '1.75', color: '#000000' }}>
@@ -481,7 +481,7 @@ function App() {
               </div>
             </div>
             <div className="flex items-start gap-5" style={{ gap: '1.5rem' }}>
-              <div className="bg-folk-cream p-4 rounded-full flex-shrink-0" style={{ padding: '1rem', backgroundColor: '#F7F4EB' }}>
+              <div className="bg-folk-cream p-4 rounded-full flex-shrink-0" style={{ padding: '1rem', backgroundColor: '#FFFFFF' }}>
                 <Star size={28} style={{ color: '#000000' }} />
               </div>
               <div className="text-base" style={{ fontSize: '1rem', lineHeight: '1.75', color: '#000000' }}>
@@ -492,7 +492,7 @@ function App() {
               </div>
             </div>
             <div className="flex items-start gap-5" style={{ gap: '1.5rem' }}>
-              <div className="bg-folk-cream p-4 rounded-full flex-shrink-0" style={{ padding: '1rem', backgroundColor: '#F7F4EB' }}>
+              <div className="bg-folk-cream p-4 rounded-full flex-shrink-0" style={{ padding: '1rem', backgroundColor: '#FFFFFF' }}>
                 <Plane size={28} style={{ color: '#000000' }} />
               </div>
               <div className="text-base" style={{ fontSize: '1rem', lineHeight: '1.75', color: '#000000' }}>
@@ -509,7 +509,7 @@ function App() {
       <SectionDivider />
 
       {/* Кому подходит и не подходит */}
-      <section ref={whoSuitsRef} id="who-suits" className="bg-folk-cream px-6" style={{ backgroundColor: '#F7F4EB', paddingTop: '5rem', paddingBottom: '5rem' }}>
+      <section ref={whoSuitsRef} id="who-suits" className="bg-folk-cream px-6" style={{ backgroundColor: '#FFFFFF', paddingTop: '5rem', paddingBottom: '5rem' }}>
         <div className="max-w-md mx-auto" style={{ maxWidth: '100%', paddingLeft: '1.5rem', paddingRight: '1.5rem' }}>
           <h2 className="font-display text-3xl text-folk-blue mb-10 text-center" style={{ marginBottom: '3rem' }}>КОМУ МЫ ПОДХОДИМ</h2>
           
@@ -568,7 +568,7 @@ function App() {
       <SectionDivider />
 
       {/* Наши туры */}
-      <section ref={toursRef} id="tours" className="bg-folk-red px-6" style={{ backgroundColor: '#B83D3F', paddingTop: '5rem', paddingBottom: '5rem' }}>
+      <section ref={toursRef} id="tours" className="bg-folk-red px-6" style={{ backgroundColor: '#FFFACD', paddingTop: '5rem', paddingBottom: '5rem' }}>
         <div className="max-w-md mx-auto" style={{ maxWidth: '100%', paddingLeft: '1.5rem', paddingRight: '1.5rem' }}>
           <h2 className="font-display text-3xl mb-8 text-center" style={{ marginBottom: '2rem', color: '#000000' }}>НАШИ ТУРЫ</h2>
           <p className="text-base text-center mb-10 leading-relaxed" style={{ fontSize: '1rem', lineHeight: '1.75', marginBottom: '3rem', color: '#000000' }}>
@@ -603,7 +603,7 @@ function App() {
       <SectionDivider />
 
       {/* Связаться с нами */}
-      <section ref={contactRef} id="contact" className="bg-folk-cream px-6" style={{ backgroundColor: '#F7F4EB', paddingTop: '5rem', paddingBottom: '5rem' }}>
+      <section ref={contactRef} id="contact" className="bg-folk-cream px-6" style={{ backgroundColor: '#FFFFFF', paddingTop: '5rem', paddingBottom: '5rem' }}>
         <div className="max-w-md mx-auto" style={{ maxWidth: '100%', paddingLeft: '1.5rem', paddingRight: '1.5rem' }}>
           <h2 className="font-display text-3xl text-folk-blue mb-8 text-center" style={{ marginBottom: '2rem' }}>СВЯЗАТЬСЯ С НАМИ</h2>
           <p className="text-folk-blue/80 text-base text-center mb-10 leading-relaxed" style={{ fontSize: '1rem', lineHeight: '1.75', marginBottom: '3rem' }}>
@@ -647,7 +647,7 @@ function App() {
       </section>
 
           {/* Footer */}
-      <footer className="bg-folk-red py-8 px-6" style={{ backgroundColor: '#B83D3F' }}>
+      <footer className="bg-folk-red py-8 px-6" style={{ backgroundColor: '#FFFACD' }}>
         <div className="max-w-md mx-auto text-center" style={{ maxWidth: '100%', paddingLeft: '1.5rem', paddingRight: '1.5rem' }}>
           <div className="flex justify-center gap-6 mb-4" style={{ color: '#000000' }}>
             <a 
