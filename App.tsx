@@ -239,21 +239,22 @@ function App() {
         maxWidth: '100%', 
         paddingLeft: '1.25rem', 
         paddingRight: '1.25rem', 
-        paddingTop: '1.5rem', 
+        paddingTop: '3rem', 
         paddingBottom: '2rem',
         backgroundColor: '#FFFACD'
       }}>
-        {/* Логотип с ягодами и текст - вверху слева, точно как на изображении */}
+        {/* Логотип с ягодами и текст - по центру */}
         <div style={{ 
           display: 'flex', 
-          alignItems: 'flex-start', 
+          alignItems: 'center', 
+          justifyContent: 'center',
           gap: '1rem', 
           marginBottom: '2.5rem'
         }}>
-          <div style={{ flexShrink: 0, marginTop: '0.25rem' }}>
+          <div style={{ flexShrink: 0 }}>
             <LogoWithBerries />
            </div>
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', justifyContent: 'flex-start' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
             <h1 style={{ 
               fontFamily: 'Arial, Helvetica, sans-serif',
               fontSize: '1.75rem', 
