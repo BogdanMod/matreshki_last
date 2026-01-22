@@ -6,6 +6,7 @@ import fs from 'fs';
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, '.', '');
     return {
+      base: '/matreshki_last/',
       server: {
         port: 3000,
         host: '0.0.0.0',
@@ -31,13 +32,6 @@ export default defineConfig(({ mode }) => {
                 html = html.replace('</body>', `<script type="module" src="${scriptSrc}"></script>\n</body>`);
               }
               fs.writeFileSync(htmlPath, html, 'utf-8');
-            }
-            
-            // Копируем _redirects файл для Cloudflare Pages
-            const redirectsPath = path.resolve(__dirname, '_redirects');
-            const distRedirectsPath = path.resolve(__dirname, 'dist/_redirects');
-            if (fs.existsSync(redirectsPath)) {
-              fs.copyFileSync(redirectsPath, distRedirectsPath);
             }
           }
         }
