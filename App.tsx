@@ -940,53 +940,117 @@ function App() {
           <SectionHeading title="Кому мы подходим" />
           <SectionLead text="Мы делаем путешествия мягкими и продуманными — это чувствуется уже в дороге." />
           
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-            <div style={{ ...contentCardStyle, backgroundColor: palette.cream }}>
-              <h3
-                className="font-bold text-folk-red mb-6 text-xl flex items-center gap-3"
-                style={{ fontSize: '1.15rem', marginBottom: '1.5rem', color: palette.red }}
-              >
-                <CheckCircle size={22} className="text-folk-red" />
-                Нам подходит, если вы:
-              </h3>
-              <ul className="space-y-5 text-base leading-relaxed" style={{ fontSize: '1rem', lineHeight: '1.75', color: palette.blueSoft }}>
-                <li className="flex items-start gap-3" style={{ gap: '0.9rem' }}>
-                  <span style={{ color: palette.red, fontSize: '1.2rem' }}>✓</span>
-                  <span>Ищете комфортные поездки в женской компании, где можно расслабиться и быть собой.</span>
-                </li>
-                <li className="flex items-start gap-3" style={{ gap: '0.9rem' }}>
-                  <span style={{ color: palette.red, fontSize: '1.2rem' }}>✓</span>
-                  <span>Цените заботу, красивый сервис и внимание к деталям.</span>
-                </li>
-                <li className="flex items-start gap-3" style={{ gap: '0.9rem' }}>
-                  <span style={{ color: palette.red, fontSize: '1.2rem' }}>✓</span>
-                  <span>Хотите открыть новые места и получить вдохновение без суеты.</span>
-                </li>
-              </ul>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.4rem' }}>
+            <div
+              style={{
+                backgroundColor: palette.cream,
+                borderRadius: '22px',
+                padding: '1.4rem',
+                border: '1px solid rgba(184, 61, 63, 0.12)',
+                boxShadow: '0 14px 26px rgba(31, 46, 77, 0.08)',
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1rem' }}>
+                <div
+                  style={{
+                    width: '34px',
+                    height: '34px',
+                    borderRadius: '10px',
+                    backgroundColor: palette.red,
+                    color: palette.white,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <CheckCircle size={18} />
+                </div>
+                <h3 style={{ margin: 0, fontSize: '1.05rem', color: palette.blue, letterSpacing: '0.04em' }}>
+                  Для вас, если
+                </h3>
+              </div>
+              <div style={{ display: 'grid', gap: '0.8rem' }}>
+                {[
+                  'Ищете спокойный и красивый отдых в женской компании',
+                  'Цените заботу, комфорт и внимательные детали',
+                  'Хотите вдохновения без суеты и плотных графиков',
+                ].map((text) => (
+                  <div
+                    key={text}
+                    style={{
+                      backgroundColor: palette.white,
+                      borderRadius: '16px',
+                      padding: '0.85rem 1rem',
+                      border: '1px solid rgba(184, 61, 63, 0.1)',
+                      color: palette.blueSoft,
+                      fontSize: '0.95rem',
+                      lineHeight: '1.6',
+                      display: 'flex',
+                      gap: '0.6rem',
+                      alignItems: 'flex-start',
+                    }}
+                  >
+                    <span style={{ color: palette.red, fontWeight: 700 }}>•</span>
+                    <span>{text}</span>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            <div style={contentCardStyle}>
-              <h3
-                className="font-bold text-folk-blue mb-6 text-xl flex items-center gap-3"
-                style={{ fontSize: '1.15rem', marginBottom: '1.5rem', color: palette.blue }}
-              >
-                <XCircle size={22} className="text-folk-blue" />
-                Возможно, мы не подходим, если вы:
-              </h3>
-              <ul className="space-y-5 text-base leading-relaxed" style={{ fontSize: '1rem', lineHeight: '1.75', color: palette.blueSoft }}>
-                <li className="flex items-start gap-3" style={{ gap: '0.9rem' }}>
-                  <span style={{ color: 'rgba(31, 46, 77, 0.5)', fontSize: '1.2rem' }}>✗</span>
-                  <span>Ищете максимально бюджетный вариант без сервиса и сопровождения.</span>
-                </li>
-                <li className="flex items-start gap-3" style={{ gap: '0.9rem' }}>
-                  <span style={{ color: 'rgba(31, 46, 77, 0.5)', fontSize: '1.2rem' }}>✗</span>
-                  <span>Предпочитаете полностью самостоятельные поездки без группы.</span>
-                </li>
-                <li className="flex items-start gap-3" style={{ gap: '0.9rem' }}>
-                  <span style={{ color: 'rgba(31, 46, 77, 0.5)', fontSize: '1.2rem' }}>✗</span>
-                  <span>Не готовы к общению и совместным активностям.</span>
-                </li>
-              </ul>
+            <div
+              style={{
+                backgroundColor: palette.white,
+                borderRadius: '22px',
+                padding: '1.4rem',
+                border: '1px solid rgba(31, 46, 77, 0.08)',
+                boxShadow: '0 12px 22px rgba(31, 46, 77, 0.06)',
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1rem' }}>
+                <div
+                  style={{
+                    width: '34px',
+                    height: '34px',
+                    borderRadius: '10px',
+                    backgroundColor: 'rgba(31, 46, 77, 0.08)',
+                    color: palette.blue,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <XCircle size={18} />
+                </div>
+                <h3 style={{ margin: 0, fontSize: '1.05rem', color: palette.blue, letterSpacing: '0.04em' }}>
+                  Возможно, не подойдём
+                </h3>
+              </div>
+              <div style={{ display: 'grid', gap: '0.8rem' }}>
+                {[
+                  'Нужен самый бюджетный формат без сервиса',
+                  'Предпочитаете полностью самостоятельные поездки',
+                  'Не готовы к общению и совместным активностям',
+                ].map((text) => (
+                  <div
+                    key={text}
+                    style={{
+                      backgroundColor: palette.cream,
+                      borderRadius: '16px',
+                      padding: '0.85rem 1rem',
+                      border: '1px solid rgba(31, 46, 77, 0.08)',
+                      color: palette.blueSoft,
+                      fontSize: '0.95rem',
+                      lineHeight: '1.6',
+                      display: 'flex',
+                      gap: '0.6rem',
+                      alignItems: 'flex-start',
+                    }}
+                  >
+                    <span style={{ color: 'rgba(31, 46, 77, 0.5)', fontWeight: 700 }}>•</span>
+                    <span>{text}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
