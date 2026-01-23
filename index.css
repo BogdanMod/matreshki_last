@@ -17,8 +17,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
-  background-color: #FFFFFF;
-  color: #000000;
+  background-color: #FFFDF7;
+  color: #1F2E4D;
   width: 100%;
   min-height: 100vh;
 }
@@ -30,11 +30,11 @@ body {
 
 /* Ensure Tailwind colors work */
 .bg-folk-cream {
-  background-color: #F7F4EB !important;
+  background-color: #FFFDF7 !important;
 }
 
 .bg-folk-red {
-  background-color: #FFFACD !important;
+  background-color: #B83D3F !important;
 }
 
 .bg-folk-blue {
@@ -42,7 +42,7 @@ body {
 }
 
 .text-folk-cream {
-  color: #F7F4EB !important;
+  color: #FFFDF7 !important;
 }
 
 .text-folk-red {

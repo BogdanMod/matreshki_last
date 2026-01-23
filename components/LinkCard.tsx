@@ -10,9 +10,13 @@ interface LinkCardProps {
 export const LinkCard: React.FC<LinkCardProps> = ({ item, variant = 'light' }) => {
   const isExternal = item.url.startsWith('http') || item.url.startsWith('https');
   const isDark = variant === 'dark';
-  
-  const bgColor = item.highlight ? '#1F2E4D' : (isDark ? '#F7F4EB' : '#F7F4EB');
-  const textColor = item.highlight ? '#F7F4EB' : '#1F2E4D';
+
+  const bgColor = item.highlight ? '#B83D3F' : '#FFFFFF';
+  const textColor = item.highlight ? '#FFFFFF' : '#1F2E4D';
+  const borderColor = item.highlight ? '#8F2F31' : 'rgba(31, 46, 77, 0.08)';
+  const shadow = item.highlight
+    ? '0 10px 22px rgba(184, 61, 63, 0.25)'
+    : '0 8px 18px rgba(31, 46, 77, 0.08)';
   
   return (
     <a
@@ -22,14 +26,8 @@ export const LinkCard: React.FC<LinkCardProps> = ({ item, variant = 'light' }) =
         group relative flex items-center justify-between p-4 px-6 w-full
         rounded-full shadow-md
         transition-all duration-300 ease-out
-        hover:scale-[1.02] hover:shadow-lg
-        ${isDark 
-          ? item.highlight 
-            ? 'bg-folk-blue text-white border-2 border-folk-blue' 
-            : 'bg-folk-cream text-folk-blue border-2 border-transparent hover:border-folk-cream'
-          : item.highlight 
-            ? 'bg-folk-blue text-white border-2 border-folk-blue' 
-            : 'bg-folk-cream text-folk-blue border-2 border-transparent hover:border-folk-cream'}
+        hover:scale-[1.01] hover:shadow-lg
+        ${isDark ? '' : ''}
       `}
       style={{ 
         backgroundColor: bgColor, 
@@ -39,14 +37,14 @@ export const LinkCard: React.FC<LinkCardProps> = ({ item, variant = 'light' }) =
         width: '100%',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        border: `1px solid ${borderColor}`,
+        boxShadow: shadow,
       }}
     >
       <div className="flex items-center gap-4">
         {item.icon && (
-          <div className={`
-            ${item.highlight ? 'text-folk-cream' : isDark ? 'text-folk-red' : 'text-folk-red'}
-          `}>
+          <div style={{ color: item.highlight ? '#FFFFFF' : '#B83D3F' }}>
             {React.cloneElement(item.icon as React.ReactElement<any>, { size: 20 })}
           </div>
         )}
@@ -55,14 +53,20 @@ export const LinkCard: React.FC<LinkCardProps> = ({ item, variant = 'light' }) =
             {item.title}
           </h3>
           {item.subtitle && (
-             <p className={`text-[10px] font-sans font-medium uppercase tracking-wider opacity-80 ${item.highlight ? 'text-white' : isDark ? 'text-folk-red' : 'text-folk-red'}`}>
+             <p
+               className="text-[10px] font-sans font-medium uppercase tracking-wider opacity-80"
+               style={{ color: item.highlight ? '#FFFFFF' : '#B83D3F' }}
+             >
                {item.subtitle}
              </p>
           )}
         </div>
       </div>
       
-      <div className={`transition-transform duration-300 group-hover:translate-x-1 ${item.highlight ? 'text-white' : isDark ? 'text-folk-blue/50' : 'text-folk-blue/50'}`}>
+      <div
+        className="transition-transform duration-300 group-hover:translate-x-1"
+        style={{ color: item.highlight ? '#FFFFFF' : 'rgba(31, 46, 77, 0.5)' }}
+      >
         <ChevronRight size={18} />
       </div>
     </a>

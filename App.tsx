@@ -71,28 +71,15 @@ const tours: LinkItem[] = [
   },
 ];
 
-// Simple Folk Flower SVG Component - уменьшенный размер
-const FolkFlower = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 100 200" className={className} fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: '40px', height: '60px', flexShrink: 0 }}>
-    {/* Stems */}
-    <path d="M50 200C50 150 20 120 20 80" stroke="#9E2A2B" strokeWidth="2"/>
-    <path d="M50 200C50 150 80 120 80 80" stroke="#9E2A2B" strokeWidth="2"/>
-    
-    {/* Big Red Flower */}
-    <circle cx="20" cy="80" r="15" fill="#9E2A2B" />
-    <circle cx="20" cy="80" r="5" fill="#F7F4EB" />
-    <path d="M20 60C10 60 5 70 5 80C5 90 10 100 20 100C30 100 35 90 35 80C35 70 30 60 20 60Z" stroke="#9E2A2B" strokeWidth="1" fill="none"/>
-    
-    {/* Big Blue Flower */}
-    <circle cx="80" cy="80" r="15" fill="#1F2E4D" />
-    <circle cx="80" cy="80" r="5" fill="#F7F4EB" />
-    <path d="M80 60C70 60 65 70 65 80C65 90 70 100 80 100C90 100 95 90 95 80C95 70 90 60 80 60Z" stroke="#1F2E4D" strokeWidth="1" fill="none"/>
-
-    {/* Small berries */}
-    <circle cx="40" cy="140" r="4" fill="#1F2E4D" />
-    <circle cx="60" cy="120" r="4" fill="#9E2A2B" />
-  </svg>
-);
+const palette = {
+  red: '#B83D3F',
+  redDark: '#8F2F31',
+  lemon: '#FFF4B0',
+  cream: '#FFFDF7',
+  white: '#FFFFFF',
+  blue: '#1F2E4D',
+  blueSoft: '#2E4066',
+};
 
 function App() {
   console.log('[APP] App component rendering...');
@@ -177,6 +164,40 @@ function App() {
     </div>
   );
 
+  const SectionHeading = ({ title, color = palette.blue }: { title: string; color?: string }) => (
+    <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+      <h2
+        style={{
+          fontFamily: 'Georgia, "Times New Roman", serif',
+          fontSize: '1.85rem',
+          letterSpacing: '0.16em',
+          textTransform: 'uppercase',
+          margin: 0,
+          color,
+        }}
+      >
+        {title}
+      </h2>
+      <div
+        style={{
+          width: '64px',
+          height: '3px',
+          borderRadius: '999px',
+          backgroundColor: palette.red,
+          margin: '0.9rem auto 0',
+        }}
+      />
+    </div>
+  );
+
+  const contentCardStyle = {
+    backgroundColor: palette.white,
+    borderRadius: '20px',
+    padding: '1.5rem',
+    boxShadow: '0 12px 24px rgba(31, 46, 77, 0.08)',
+    border: '1px solid rgba(184, 61, 63, 0.08)',
+  } as const;
+
   console.log('[APP] Render check - error:', error, 'isLoading:', isLoading, 'isMobile:', isMobile);
   
   // Показываем ошибку, если она есть
@@ -231,81 +252,142 @@ function App() {
   console.log('[APP] Rendering main content');
 
   return (
-    <div className="min-h-screen font-sans relative" style={{ backgroundColor: '#FFFFFF', color: '#000000', width: '100%', minHeight: '100vh' }}>
+    <div
+      className="min-h-screen font-sans relative"
+      style={{ backgroundColor: palette.cream, color: palette.blue, width: '100%', minHeight: '100vh' }}
+    >
       <BurgerMenu onNavigate={scrollToSection} />
       
-      {/* Hero Section - точная копия дизайна */}
-      <div style={{ 
-        maxWidth: '100%', 
-        paddingLeft: '1.25rem', 
-        paddingRight: '1.25rem', 
-        paddingTop: '5rem', 
-        paddingBottom: '2rem',
-        backgroundColor: '#FFFACD',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center'
-      }}>
-        {/* Логотип с ягодами и текст - по центру */}
-        <div style={{ 
-          display: 'flex', 
-          alignItems: 'center', 
-          justifyContent: 'center',
-          gap: '1rem', 
-          marginBottom: '2.5rem',
-          width: '100%'
-        }}>
-          <div style={{ flexShrink: 0 }}>
-            <LogoWithBerries />
-           </div>
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
-            <h1 style={{ 
-              fontFamily: 'Arial, Helvetica, sans-serif',
-              fontSize: '1.75rem', 
-              fontWeight: 'bold', 
-              color: '#000000', 
-              margin: 0,
-              lineHeight: '1.3',
-              letterSpacing: '-0.02em',
-              textAlign: 'center'
-            }}>
-              Matreshki&Co
-            </h1>
-            <p style={{ 
-              fontFamily: 'Brush Script MT, cursive',
-              fontSize: '1.5rem', 
-              color: '#000000', 
-              margin: 0,
-              marginTop: '0.15rem',
-              fontStyle: 'normal',
-              textAlign: 'center'
-            }}>
-              Matreshki
-            </p>
-            <p style={{ 
-              fontFamily: 'Arial, Helvetica, sans-serif',
-              fontSize: '0.6rem', 
-              fontWeight: 'bold', 
-              letterSpacing: '0.15em', 
-              color: '#000000', 
-              margin: 0,
-              marginTop: '0.3rem',
-              textTransform: 'uppercase',
-              textAlign: 'center'
-            }}>
-              WOMEN'S TRAVEL COMPANY
-            </p>
-           </div>
+      {/* Hero Section */}
+      <div
+        style={{
+          maxWidth: '100%',
+          paddingLeft: '1.25rem',
+          paddingRight: '1.25rem',
+          paddingTop: '4.5rem',
+          paddingBottom: '2.5rem',
+          background: `linear-gradient(180deg, ${palette.lemon} 0%, ${palette.cream} 70%)`,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          borderBottom: '1px solid rgba(184, 61, 63, 0.12)',
+        }}
+      >
+        <div
+          style={{
+            backgroundColor: palette.red,
+            color: palette.white,
+            padding: '0.4rem 0.9rem',
+            borderRadius: '999px',
+            fontSize: '0.65rem',
+            letterSpacing: '0.2em',
+            textTransform: 'uppercase',
+            marginBottom: '1.25rem',
+            boxShadow: '0 6px 14px rgba(184, 61, 63, 0.35)',
+          }}
+        >
+          Женские туры по России
         </div>
 
-        {/* Три карточки туров внизу - точно как на изображении */}
-        <div style={{ 
-          display: 'flex', 
-          flexDirection: 'column', 
-          gap: '1.25rem', 
-          marginTop: '2.5rem',
-          paddingBottom: '1.5rem'
-        }}>
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '1rem',
+            marginBottom: '1.5rem',
+            width: '100%',
+          }}
+        >
+          <div style={{ flexShrink: 0 }}>
+            <LogoWithBerries />
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+            <h1
+              style={{
+                fontFamily: 'Georgia, "Times New Roman", serif',
+                fontSize: '2rem',
+                fontWeight: 700,
+                color: palette.blue,
+                margin: 0,
+                lineHeight: '1.2',
+                letterSpacing: '0.02em',
+              }}
+            >
+              Matreshki&Co
+            </h1>
+            <p
+              style={{
+                fontFamily: '"Brush Script MT", "Apple Chancery", cursive',
+                fontSize: '1.6rem',
+                color: palette.red,
+                margin: 0,
+                marginTop: '0.25rem',
+              }}
+            >
+              Matreshki
+            </p>
+            <p
+              style={{
+                fontFamily: 'Arial, Helvetica, sans-serif',
+                fontSize: '0.65rem',
+                fontWeight: 700,
+                letterSpacing: '0.2em',
+                color: palette.blueSoft,
+                margin: 0,
+                marginTop: '0.35rem',
+                textTransform: 'uppercase',
+              }}
+            >
+              Women's travel company
+            </p>
+          </div>
+        </div>
+
+        <p
+          style={{
+            textAlign: 'center',
+            fontSize: '1rem',
+            lineHeight: '1.75',
+            color: palette.blueSoft,
+            maxWidth: '26rem',
+          }}
+        >
+          Авторские поездки для женщин: уютные маршруты, душевная атмосфера и русские традиции в каждом
+          путешествии.
+        </p>
+
+        <button
+          onClick={() => scrollToSection('contact')}
+          style={{
+            marginTop: '1.5rem',
+            backgroundColor: palette.red,
+            color: palette.white,
+            padding: '0.9rem 2rem',
+            borderRadius: '999px',
+            border: `1px solid ${palette.redDark}`,
+            boxShadow: '0 10px 20px rgba(184, 61, 63, 0.3)',
+            fontWeight: 700,
+            fontSize: '0.85rem',
+            letterSpacing: '0.14em',
+            textTransform: 'uppercase',
+            cursor: 'pointer',
+          }}
+        >
+          Записаться в тур
+        </button>
+
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '1.25rem',
+            marginTop: '2.5rem',
+            paddingBottom: '1.5rem',
+            width: '100%',
+            maxWidth: '28rem',
+          }}
+        >
           {homeTours.map((tour, index) => (
             <a
               key={tour.id}
@@ -316,64 +398,50 @@ function App() {
               }}
               style={{
                 position: 'relative',
-                borderRadius: '12px',
+                borderRadius: '16px',
                 overflow: 'hidden',
                 width: '100%',
                 aspectRatio: index === 0 ? '16/9' : '16/10',
-                boxShadow: '0 3px 10px rgba(0,0,0,0.15)',
+                boxShadow: '0 10px 24px rgba(31, 46, 77, 0.18)',
                 textDecoration: 'none',
                 display: 'block',
-                backgroundColor: '#f0f0f0'
+                backgroundColor: '#f0f0f0',
               }}
             >
-              <img 
-                src={tour.image} 
+              <img
+                src={tour.image}
                 alt={tour.title}
                 style={{
                   width: '100%',
                   height: '100%',
                   objectFit: 'cover',
-                  display: 'block'
+                  display: 'block',
                 }}
                 onError={(e) => {
                   (e.target as HTMLImageElement).src = 'https://via.placeholder.com/400x300?text=' + tour.title;
                 }}
               />
-              {tour.title === 'АРХЫЗ' && (
-                <div style={{
+              <div
+                style={{
                   position: 'absolute',
-                  top: 0,
                   left: 0,
                   right: 0,
-                  backgroundColor: 'rgba(30, 100, 200, 0.95)',
-                  padding: '1rem 1.25rem',
-                  color: '#FFFFFF',
-                  fontFamily: 'Arial, sans-serif'
-                }}>
-                  <div style={{ 
-                    fontSize: '1.75rem', 
-                    fontWeight: 'bold',
-                    marginBottom: '0.35rem',
-                    lineHeight: '1.2'
-                  }}>
-                    {tour.title}
-                  </div>
-                  <div style={{ 
-                    fontSize: '0.95rem',
-                    marginBottom: '0.2rem',
-                    opacity: 0.95
-                  }}>
-                    {tour.dates}
-             </div>
-                  <div style={{ 
-                    fontSize: '0.8rem', 
-                    marginTop: '0.15rem',
-                    opacity: 0.9
-                  }}>
-                    {tour.subtitle}
-           </div>
-        </div>
-              )}
+                  bottom: 0,
+                  padding: '0.85rem 1rem',
+                  background: 'linear-gradient(180deg, rgba(31, 46, 77, 0) 0%, rgba(31, 46, 77, 0.75) 65%)',
+                  color: palette.white,
+                }}
+              >
+                <div style={{ fontSize: '1.1rem', fontWeight: 700, letterSpacing: '0.02em' }}>
+                  {tour.title}
+                </div>
+                {tour.dates && (
+                  <div style={{ fontSize: '0.85rem', opacity: 0.9, marginTop: '0.2rem' }}>{tour.dates}</div>
+                )}
+                {tour.subtitle && (
+                  <div style={{ fontSize: '0.75rem', opacity: 0.85, marginTop: '0.15rem' }}>{tour.subtitle}</div>
+                )}
+              </div>
             </a>
           ))}
         </div>
@@ -382,71 +450,86 @@ function App() {
       <SectionDivider />
 
       {/* О нас */}
-      <section ref={aboutRef} id="about" className="bg-folk-red px-6" style={{ backgroundColor: '#FFFACD', paddingTop: '5rem', paddingBottom: '5rem' }}>
+      <section
+        ref={aboutRef}
+        id="about"
+        className="bg-folk-red px-6"
+        style={{ backgroundColor: palette.cream, paddingTop: '4.5rem', paddingBottom: '4.5rem' }}
+      >
         <div className="max-w-md mx-auto" style={{ maxWidth: '100%', paddingLeft: '1.5rem', paddingRight: '1.5rem' }}>
-          <h2 className="font-display text-3xl mb-8 text-center" style={{ marginBottom: '3rem', color: '#000000' }}>О НАС</h2>
-          <div className="space-y-6 text-base leading-relaxed" style={{ fontSize: '1rem', lineHeight: '1.75', color: '#000000' }}>
-            <p>
-              Matreshki&Co — это женское турагентство, созданное специально для прекрасных дам, 
-              которые мечтают о незабываемых путешествиях. Мы организуем авторские туры по России 
-              и зарубежным странам, где каждая деталь продумана с любовью.
-            </p>
-            <p>
-              Наша миссия — показать вам мир через призму красоты, культуры и женской дружбы. 
-              Мы создаём не просто поездки, а целые истории, которые останутся с вами навсегда.
-            </p>
-            <p>
-              Каждое наше путешествие — это не просто экскурсия, а настоящее приключение, которое 
-              раскрывает новые грани вашей личности. Мы верим, что путешествия должны быть 
-              комфортными, безопасными и наполненными прекрасными моментами.
-            </p>
-            <p>
-              Присоединяйтесь к нашему сообществу женщин-путешественниц и откройте для себя мир 
-              в компании единомышленниц, которые ценят красоту, культуру и настоящие эмоции.
-            </p>
+          <SectionHeading title="О НАС" />
+          <div style={contentCardStyle}>
+            <div className="space-y-6 text-base leading-relaxed" style={{ fontSize: '1rem', lineHeight: '1.75', color: palette.blueSoft }}>
+              <p>
+                Matreshki&Co — это женское турагентство, созданное специально для прекрасных дам,
+                которые мечтают о незабываемых путешествиях. Мы организуем авторские туры по России
+                и зарубежным странам, где каждая деталь продумана с любовью.
+              </p>
+              <p>
+                Наша миссия — показать вам мир через призму красоты, культуры и женской дружбы.
+                Мы создаём не просто поездки, а целые истории, которые останутся с вами навсегда.
+              </p>
+              <p>
+                Каждое путешествие — это нежный баланс эстетики, комфорта и ярких эмоций.
+                Мы бережно сопровождаем вас на каждом этапе и создаём атмосферу заботы.
+              </p>
+              <p>
+                Присоединяйтесь к нашему сообществу путешественниц и откройте мир в компании,
+                где ценят традиции, искренность и тепло.
+              </p>
+            </div>
           </div>
-      </div>
+        </div>
       </section>
 
       <SectionDivider />
 
       {/* Об авторе */}
-      <section ref={authorRef} id="author" className="bg-folk-cream px-6" style={{ backgroundColor: '#FFFFFF', paddingTop: '5rem', paddingBottom: '5rem' }}>
+      <section
+        ref={authorRef}
+        id="author"
+        className="bg-folk-cream px-6"
+        style={{ backgroundColor: palette.white, paddingTop: '4.5rem', paddingBottom: '4.5rem' }}
+      >
         <div className="max-w-md mx-auto" style={{ maxWidth: '100%', paddingLeft: '1.5rem', paddingRight: '1.5rem' }}>
-          <h2 className="font-display text-3xl text-folk-blue mb-8 text-center" style={{ marginBottom: '3rem' }}>ОБ АВТОРЕ</h2>
-          <div className="flex flex-col items-center mb-10" style={{ marginBottom: '3rem' }}>
-            <div className="w-40 h-40 rounded-full border-4 border-folk-red overflow-hidden mb-6 shadow-lg" style={{ width: '10rem', height: '10rem' }}>
-              <img 
-                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=400" 
-                alt="Александрия" 
+          <SectionHeading title="Об авторе" />
+          <div className="flex flex-col items-center mb-10" style={{ marginBottom: '2.5rem' }}>
+            <div
+              className="w-40 h-40 rounded-full border-4 border-folk-red overflow-hidden mb-6 shadow-lg"
+              style={{ width: '10rem', height: '10rem', borderColor: palette.red }}
+            >
+              <img
+                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=400"
+                alt="Александрия"
                 className="w-full h-full object-cover"
               />
             </div>
-            <h3 className="font-serif text-3xl text-folk-blue mb-3" style={{ fontSize: '2rem', marginBottom: '1rem' }}>Александрия</h3>
-            <p className="text-folk-blue/60 text-sm italic" style={{ fontSize: '0.875rem' }}>Основательница и путешественница</p>
+            <h3
+              className="font-serif text-3xl text-folk-blue mb-3"
+              style={{ fontSize: '2rem', marginBottom: '0.6rem', color: palette.blue }}
+            >
+              Александрия
+            </h3>
+            <p className="text-folk-blue/60 text-sm italic" style={{ fontSize: '0.9rem', color: palette.blueSoft }}>
+              Основательница и вдохновительница туров
+            </p>
           </div>
-          <div className="space-y-6 text-folk-blue/80 text-base leading-relaxed" style={{ fontSize: '1rem', lineHeight: '1.75' }}>
-            <p>
-              Меня зовут Александрия, и я основательница Matreshki&Co. Более 10 лет я путешествую 
-              по миру, открывая для себя новые места и культуры. Моя страсть к путешествиям 
-              привела к созданию этого проекта, который объединяет женщин со всего мира.
-            </p>
-            <p>
-              Я верю, что каждая женщина заслуживает незабываемых приключений. Моя цель — 
-              организовать для вас такие поездки, которые станут яркими воспоминаниями и 
-              подарят вдохновение на долгие годы. Каждое путешествие я планирую с особой 
-              тщательностью, чтобы оно было идеальным.
-            </p>
-            <p>
-              В каждом туре я делюсь своими знаниями, опытом и любовью к путешествиям. 
-              Мы вместе открываем секреты местных жителей, пробуем аутентичную кухню и 
-              погружаемся в культуру каждой страны.
-            </p>
-            <p>
-              Присоединяйтесь к нашему сообществу и откройте для себя мир вместе с нами! 
-              Я с радостью помогу вам найти ваше идеальное путешествие и создать воспоминания, 
-              которые будут согревать вас долгие годы.
-            </p>
+          <div style={contentCardStyle}>
+            <div className="space-y-6 text-base leading-relaxed" style={{ fontSize: '1rem', lineHeight: '1.75', color: palette.blueSoft }}>
+              <p>
+                Меня зовут Александрия, и я основательница Matreshki&Co. Более 10 лет я путешествую
+                по миру, открывая для себя новые места и культуры. Моя страсть к путешествиям
+                привела к созданию проекта, который объединяет женщин со всей России.
+              </p>
+              <p>
+                Я верю, что каждая женщина заслуживает особенных впечатлений. Моя цель — организовать
+                для вас такие поездки, которые станут тёплыми воспоминаниями и подарят вдохновение.
+              </p>
+              <p>
+                В каждом туре я делюсь опытом, знаниями и любовью к традициям. Мы вместе открываем
+                аутентичную кухню, ремёсла и культурные секреты разных регионов.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -454,54 +537,75 @@ function App() {
       <SectionDivider />
 
       {/* Почему именно мы */}
-      <section ref={whyUsRef} id="why-us" className="bg-folk-red px-6" style={{ backgroundColor: '#FFFACD', paddingTop: '5rem', paddingBottom: '5rem' }}>
+      <section
+        ref={whyUsRef}
+        id="why-us"
+        className="bg-folk-red px-6"
+        style={{ backgroundColor: palette.cream, paddingTop: '4.5rem', paddingBottom: '4.5rem' }}
+      >
         <div className="max-w-md mx-auto" style={{ maxWidth: '100%', paddingLeft: '1.5rem', paddingRight: '1.5rem' }}>
-          <h2 className="font-display text-3xl mb-10 text-center" style={{ marginBottom: '3rem', color: '#000000' }}>ПОЧЕМУ ИМЕННО МЫ</h2>
-          <div className="space-y-8" style={{ gap: '2.5rem' }}>
-            <div className="flex items-start gap-5" style={{ gap: '1.5rem' }}>
-              <div className="bg-folk-cream p-4 rounded-full flex-shrink-0" style={{ padding: '1rem', backgroundColor: '#FFFFFF' }}>
-                <Heart size={28} style={{ color: '#000000' }} />
+          <SectionHeading title="Почему именно мы" />
+          <div className="space-y-6" style={{ gap: '1.5rem' }}>
+            {[
+              {
+                icon: <Heart size={24} />,
+                title: 'Авторский подход',
+                text:
+                  'Каждый тур создаётся индивидуально с учётом ваших пожеланий и интересов. Мы не используем готовые шаблоны — каждый маршрут уникален.',
+              },
+              {
+                icon: <Users size={24} />,
+                title: 'Женское сообщество',
+                text:
+                  'Путешествуйте в компании единомышленниц и заводите новых друзей. Мы создаём атмосферу поддержки и взаимопонимания.',
+              },
+              {
+                icon: <Star size={24} />,
+                title: 'Проверенные маршруты',
+                text:
+                  'Мы тщательно отбираем места и партнёров, чтобы путешествие было комфортным и безопасным. Каждый маршрут проходит проверку.',
+              },
+              {
+                icon: <Plane size={24} />,
+                title: 'Полное сопровождение',
+                text:
+                  'От момента бронирования до возвращения домой мы всегда на связи. Ваш комфорт и безопасность — наш приоритет.',
+              },
+            ].map((item) => (
+              <div
+                key={item.title}
+                style={{
+                  backgroundColor: palette.white,
+                  borderRadius: '16px',
+                  padding: '1.25rem',
+                  boxShadow: '0 10px 20px rgba(31, 46, 77, 0.08)',
+                  border: '1px solid rgba(184, 61, 63, 0.08)',
+                  display: 'flex',
+                  gap: '1rem',
+                  alignItems: 'flex-start',
+                }}
+              >
+                <div
+                  style={{
+                    width: '40px',
+                    height: '40px',
+                    borderRadius: '999px',
+                    backgroundColor: palette.lemon,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: palette.red,
+                    flexShrink: 0,
+                  }}
+                >
+                  {item.icon}
+                </div>
+                <div style={{ color: palette.blueSoft, fontSize: '1rem', lineHeight: '1.7' }}>
+                  <div style={{ fontWeight: 700, marginBottom: '0.4rem', color: palette.blue }}>{item.title}</div>
+                  <p style={{ margin: 0 }}>{item.text}</p>
+                </div>
               </div>
-              <div className="text-base" style={{ fontSize: '1rem', lineHeight: '1.75', color: '#000000' }}>
-                <h3 className="font-bold mb-3 text-lg" style={{ fontSize: '1.125rem', marginBottom: '0.75rem', color: '#000000' }}>Авторский подход</h3>
-                <p>Каждый тур создаётся индивидуально с учётом ваших пожеланий и интересов. 
-                Мы не используем готовые шаблоны — каждый маршрут уникален и продуман до мельчайших деталей 
-                специально для вас и вашей группы.</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-5" style={{ gap: '1.5rem' }}>
-              <div className="bg-folk-cream p-4 rounded-full flex-shrink-0" style={{ padding: '1rem', backgroundColor: '#FFFFFF' }}>
-                <Users size={28} style={{ color: '#000000' }} />
-              </div>
-              <div className="text-base" style={{ fontSize: '1rem', lineHeight: '1.75', color: '#000000' }}>
-                <h3 className="font-bold mb-3 text-lg" style={{ fontSize: '1.125rem', marginBottom: '0.75rem', color: '#000000' }}>Женское сообщество</h3>
-                <p>Путешествуйте в компании единомышленниц и заводите новых друзей. Наши туры — это 
-                не просто поездки, а возможность найти подруг, разделяющих ваши интересы и ценности. 
-                Мы создаём атмосферу поддержки и взаимопонимания.</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-5" style={{ gap: '1.5rem' }}>
-              <div className="bg-folk-cream p-4 rounded-full flex-shrink-0" style={{ padding: '1rem', backgroundColor: '#FFFFFF' }}>
-                <Star size={28} style={{ color: '#000000' }} />
-              </div>
-              <div className="text-base" style={{ fontSize: '1rem', lineHeight: '1.75', color: '#000000' }}>
-                <h3 className="font-bold mb-3 text-lg" style={{ fontSize: '1.125rem', marginBottom: '0.75rem', color: '#000000' }}>Проверенные маршруты</h3>
-                <p>Мы тщательно отбираем места и партнёров, чтобы ваше путешествие было комфортным и безопасным. 
-                Каждый отель, ресторан и экскурсия проходят проверку лично нами. Мы знаем каждое место, 
-                куда ведём наших путешественниц, и гарантируем высокое качество услуг.</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-5" style={{ gap: '1.5rem' }}>
-              <div className="bg-folk-cream p-4 rounded-full flex-shrink-0" style={{ padding: '1rem', backgroundColor: '#FFFFFF' }}>
-                <Plane size={28} style={{ color: '#000000' }} />
-              </div>
-              <div className="text-base" style={{ fontSize: '1rem', lineHeight: '1.75', color: '#000000' }}>
-                <h3 className="font-bold mb-3 text-lg" style={{ fontSize: '1.125rem', marginBottom: '0.75rem', color: '#000000' }}>Полное сопровождение</h3>
-                <p>От момента бронирования до возвращения домой мы всегда на связи и готовы помочь. 
-                Мы помогаем с оформлением документов, консультируем по всем вопросам и остаёмся 
-                доступными 24/7 во время всего путешествия. Ваш комфорт и безопасность — наш приоритет.</p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -509,58 +613,63 @@ function App() {
       <SectionDivider />
 
       {/* Кому подходит и не подходит */}
-      <section ref={whoSuitsRef} id="who-suits" className="bg-folk-cream px-6" style={{ backgroundColor: '#FFFFFF', paddingTop: '5rem', paddingBottom: '5rem' }}>
+      <section
+        ref={whoSuitsRef}
+        id="who-suits"
+        className="bg-folk-cream px-6"
+        style={{ backgroundColor: palette.white, paddingTop: '4.5rem', paddingBottom: '4.5rem' }}
+      >
         <div className="max-w-md mx-auto" style={{ maxWidth: '100%', paddingLeft: '1.5rem', paddingRight: '1.5rem' }}>
-          <h2 className="font-display text-3xl text-folk-blue mb-10 text-center" style={{ marginBottom: '3rem' }}>КОМУ МЫ ПОДХОДИМ</h2>
+          <SectionHeading title="Кому мы подходим" />
           
-          <div className="mb-12" style={{ marginBottom: '4rem' }}>
-            <h3 className="font-bold text-folk-red mb-6 text-xl flex items-center gap-3" style={{ fontSize: '1.25rem', marginBottom: '2rem' }}>
-              <CheckCircle size={24} className="text-folk-red" />
-              Нам подходит, если вы:
-            </h3>
-            <ul className="space-y-5 text-folk-blue/80 text-base leading-relaxed" style={{ fontSize: '1rem', lineHeight: '1.75', gap: '1.5rem' }}>
-              <li className="flex items-start gap-3" style={{ gap: '1rem' }}>
-                <span className="text-folk-red mt-1 text-xl" style={{ fontSize: '1.25rem' }}>✓</span>
-                <span>Ищете комфортные и безопасные путешествия в женской компании, где можно расслабиться и быть собой</span>
-              </li>
-              <li className="flex items-start gap-3" style={{ gap: '1rem' }}>
-                <span className="text-folk-red mt-1 text-xl" style={{ fontSize: '1.25rem' }}>✓</span>
-                <span>Цените индивидуальный подход и внимание к деталям, когда каждая мелочь продумана специально для вас</span>
-              </li>
-              <li className="flex items-start gap-3" style={{ gap: '1rem' }}>
-                <span className="text-folk-red mt-1 text-xl" style={{ fontSize: '1.25rem' }}>✓</span>
-                <span>Хотите открыть для себя новые места и культуры, получить незабываемые впечатления и расширить горизонты</span>
-              </li>
-              <li className="flex items-start gap-3" style={{ gap: '1rem' }}>
-                <span className="text-folk-red mt-1 text-xl" style={{ fontSize: '1.25rem' }}>✓</span>
-                <span>Готовы к приключениям и новым знакомствам, открыты общению и готовы делиться опытом с другими</span>
-              </li>
-              <li className="flex items-start gap-3" style={{ gap: '1rem' }}>
-                <span className="text-folk-red mt-1 text-xl" style={{ fontSize: '1.25rem' }}>✓</span>
-                <span>Ищете вдохновение и хотите отдохнуть от рутины, зарядиться энергией и получить новые эмоции</span>
-              </li>
-            </ul>
-          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+            <div style={{ ...contentCardStyle, backgroundColor: palette.cream }}>
+              <h3
+                className="font-bold text-folk-red mb-6 text-xl flex items-center gap-3"
+                style={{ fontSize: '1.15rem', marginBottom: '1.5rem', color: palette.red }}
+              >
+                <CheckCircle size={22} className="text-folk-red" />
+                Нам подходит, если вы:
+              </h3>
+              <ul className="space-y-5 text-base leading-relaxed" style={{ fontSize: '1rem', lineHeight: '1.75', color: palette.blueSoft }}>
+                <li className="flex items-start gap-3" style={{ gap: '0.9rem' }}>
+                  <span style={{ color: palette.red, fontSize: '1.2rem' }}>✓</span>
+                  <span>Ищете комфортные и безопасные путешествия в женской компании, где можно расслабиться и быть собой.</span>
+                </li>
+                <li className="flex items-start gap-3" style={{ gap: '0.9rem' }}>
+                  <span style={{ color: palette.red, fontSize: '1.2rem' }}>✓</span>
+                  <span>Цените индивидуальный подход и внимание к деталям, когда каждая мелочь продумана специально для вас.</span>
+                </li>
+                <li className="flex items-start gap-3" style={{ gap: '0.9rem' }}>
+                  <span style={{ color: palette.red, fontSize: '1.2rem' }}>✓</span>
+                  <span>Хотите открыть новые места и культуры, получить незабываемые впечатления и расширить горизонты.</span>
+                </li>
+              </ul>
+            </div>
 
-          <div>
-            <h3 className="font-bold text-folk-blue mb-6 text-xl flex items-center gap-3" style={{ fontSize: '1.25rem', marginBottom: '2rem' }}>
-              <XCircle size={24} className="text-folk-blue" />
-              Возможно, мы не подходим, если вы:
-            </h3>
-            <ul className="space-y-5 text-folk-blue/60 text-base leading-relaxed" style={{ fontSize: '1rem', lineHeight: '1.75', gap: '1.5rem' }}>
-              <li className="flex items-start gap-3" style={{ gap: '1rem' }}>
-                <span className="text-folk-blue/40 mt-1 text-xl" style={{ fontSize: '1.25rem' }}>✗</span>
-                <span>Ищете бюджетные поездки эконом-класса — мы предлагаем качественный сервис и комфортные условия</span>
-              </li>
-              <li className="flex items-start gap-3" style={{ gap: '1rem' }}>
-                <span className="text-folk-blue/40 mt-1 text-xl" style={{ fontSize: '1.25rem' }}>✗</span>
-                <span>Предпочитаете самостоятельные путешествия без сопровождения — наши туры всегда проходят в группах</span>
-              </li>
-              <li className="flex items-start gap-3" style={{ gap: '1rem' }}>
-                <span className="text-folk-blue/40 mt-1 text-xl" style={{ fontSize: '1.25rem' }}>✗</span>
-                <span>Не готовы к общению и взаимодействию с группой — мы ценим атмосферу дружбы и взаимопонимания</span>
-              </li>
-            </ul>
+            <div style={contentCardStyle}>
+              <h3
+                className="font-bold text-folk-blue mb-6 text-xl flex items-center gap-3"
+                style={{ fontSize: '1.15rem', marginBottom: '1.5rem', color: palette.blue }}
+              >
+                <XCircle size={22} className="text-folk-blue" />
+                Возможно, мы не подходим, если вы:
+              </h3>
+              <ul className="space-y-5 text-base leading-relaxed" style={{ fontSize: '1rem', lineHeight: '1.75', color: palette.blueSoft }}>
+                <li className="flex items-start gap-3" style={{ gap: '0.9rem' }}>
+                  <span style={{ color: 'rgba(31, 46, 77, 0.5)', fontSize: '1.2rem' }}>✗</span>
+                  <span>Ищете бюджетные поездки эконом-класса — мы предлагаем качественный сервис и комфортные условия.</span>
+                </li>
+                <li className="flex items-start gap-3" style={{ gap: '0.9rem' }}>
+                  <span style={{ color: 'rgba(31, 46, 77, 0.5)', fontSize: '1.2rem' }}>✗</span>
+                  <span>Предпочитаете самостоятельные путешествия без сопровождения — наши туры проходят в группах.</span>
+                </li>
+                <li className="flex items-start gap-3" style={{ gap: '0.9rem' }}>
+                  <span style={{ color: 'rgba(31, 46, 77, 0.5)', fontSize: '1.2rem' }}>✗</span>
+                  <span>Не готовы к общению с группой — мы ценим атмосферу дружбы и взаимопонимания.</span>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
@@ -568,31 +677,47 @@ function App() {
       <SectionDivider />
 
       {/* Наши туры */}
-      <section ref={toursRef} id="tours" className="bg-folk-red px-6" style={{ backgroundColor: '#FFFACD', paddingTop: '5rem', paddingBottom: '5rem' }}>
+      <section
+        ref={toursRef}
+        id="tours"
+        className="bg-folk-red px-6"
+        style={{ backgroundColor: palette.cream, paddingTop: '4.5rem', paddingBottom: '4.5rem' }}
+      >
         <div className="max-w-md mx-auto" style={{ maxWidth: '100%', paddingLeft: '1.5rem', paddingRight: '1.5rem' }}>
-          <h2 className="font-display text-3xl mb-8 text-center" style={{ marginBottom: '2rem', color: '#000000' }}>НАШИ ТУРЫ</h2>
-          <p className="text-base text-center mb-10 leading-relaxed" style={{ fontSize: '1rem', lineHeight: '1.75', marginBottom: '3rem', color: '#000000' }}>
+          <SectionHeading title="Наши туры" />
+          <p className="text-base text-center mb-10 leading-relaxed" style={{ fontSize: '1rem', lineHeight: '1.75', marginBottom: '2.5rem', color: palette.blueSoft }}>
             Выберите направление своей мечты и отправляйтесь в незабываемое путешествие. 
             Каждый наш тур — это уникальная возможность открыть для себя новые горизонты, 
             познакомиться с удивительными людьми и создать воспоминания на всю жизнь.
           </p>
           
-          <div className="flex flex-col gap-6 mb-12" style={{ gap: '1.5rem', marginBottom: '4rem' }}>
+          <div className="flex flex-col gap-6 mb-12" style={{ gap: '1.5rem', marginBottom: '3rem' }}>
             {tours.map((tour) => (
               <LinkCard key={tour.id} item={tour} variant="dark" />
             ))}
           </div>
 
           <div className="text-center">
-            <p className="text-base mb-6 leading-relaxed" style={{ fontSize: '1rem', lineHeight: '1.75', marginBottom: '2rem', color: '#000000' }}>
+            <p className="text-base mb-6 leading-relaxed" style={{ fontSize: '1rem', lineHeight: '1.75', marginBottom: '2rem', color: palette.blueSoft }}>
               Хотите узнать больше о наших турах? Свяжитесь с нами, и мы расскажем 
               подробности о каждом маршруте, поможем выбрать идеальное направление и 
               ответим на все ваши вопросы.
             </p>
             <button
               onClick={() => scrollToSection('contact')}
-              className="bg-folk-cream text-folk-red px-10 py-4 rounded-full font-bold text-sm uppercase tracking-widest shadow-lg hover:bg-white transition-colors"
-              style={{ padding: '1rem 2.5rem', fontSize: '0.875rem', fontWeight: 'bold' }}
+              style={{
+                padding: '0.95rem 2.4rem',
+                fontSize: '0.85rem',
+                fontWeight: 700,
+                textTransform: 'uppercase',
+                letterSpacing: '0.16em',
+                color: palette.white,
+                backgroundColor: palette.red,
+                borderRadius: '999px',
+                border: `1px solid ${palette.redDark}`,
+                boxShadow: '0 10px 20px rgba(184, 61, 63, 0.3)',
+                cursor: 'pointer',
+              }}
             >
               Связаться с нами
             </button>
@@ -603,22 +728,41 @@ function App() {
       <SectionDivider />
 
       {/* Связаться с нами */}
-      <section ref={contactRef} id="contact" className="bg-folk-cream px-6" style={{ backgroundColor: '#FFFFFF', paddingTop: '5rem', paddingBottom: '5rem' }}>
+      <section
+        ref={contactRef}
+        id="contact"
+        className="bg-folk-cream px-6"
+        style={{ backgroundColor: palette.white, paddingTop: '4.5rem', paddingBottom: '4.5rem' }}
+      >
         <div className="max-w-md mx-auto" style={{ maxWidth: '100%', paddingLeft: '1.5rem', paddingRight: '1.5rem' }}>
-          <h2 className="font-display text-3xl text-folk-blue mb-8 text-center" style={{ marginBottom: '2rem' }}>СВЯЗАТЬСЯ С НАМИ</h2>
-          <p className="text-folk-blue/80 text-base text-center mb-10 leading-relaxed" style={{ fontSize: '1rem', lineHeight: '1.75', marginBottom: '3rem' }}>
+          <SectionHeading title="Связаться с нами" />
+          <p className="text-folk-blue/80 text-base text-center mb-10 leading-relaxed" style={{ fontSize: '1rem', lineHeight: '1.75', marginBottom: '2.5rem', color: palette.blueSoft }}>
             Мы всегда рады ответить на ваши вопросы и помочь выбрать идеальное путешествие. 
             Свяжитесь с нами любым удобным способом — через Telegram, Instagram или по телефону. 
             Мы ответим в ближайшее время и поможем спланировать ваше идеальное приключение.
           </p>
           
-          <div className="flex flex-col gap-5 mb-10" style={{ gap: '1.25rem', marginBottom: '3rem' }}>
+          <div className="flex flex-col gap-5 mb-10" style={{ gap: '1.25rem', marginBottom: '2.5rem' }}>
             <a
               href="https://t.me/matreshkico"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-folk-blue text-folk-cream p-5 rounded-full flex items-center justify-center gap-3 font-bold text-base uppercase tracking-wider shadow-lg hover:bg-blue-900 transition-colors"
-              style={{ padding: '1.25rem', fontSize: '1rem' }}
+              style={{
+                padding: '1.1rem',
+                fontSize: '0.95rem',
+                fontWeight: 700,
+                textTransform: 'uppercase',
+                letterSpacing: '0.16em',
+                borderRadius: '999px',
+                backgroundColor: palette.blue,
+                color: palette.white,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '0.75rem',
+                boxShadow: '0 10px 20px rgba(31, 46, 77, 0.25)',
+                textDecoration: 'none',
+              }}
             >
               <Send size={24} />
               Telegram
@@ -627,20 +771,40 @@ function App() {
               href="https://instagram.com/matreshkico"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-gradient-to-r from-purple-500 to-pink-500 text-white p-5 rounded-full flex items-center justify-center gap-3 font-bold text-base uppercase tracking-wider shadow-lg hover:opacity-90 transition-opacity"
-              style={{ padding: '1.25rem', fontSize: '1rem' }}
+              style={{
+                padding: '1.1rem',
+                fontSize: '0.95rem',
+                fontWeight: 700,
+                textTransform: 'uppercase',
+                letterSpacing: '0.16em',
+                borderRadius: '999px',
+                background: `linear-gradient(90deg, ${palette.red} 0%, #D46A6B 100%)`,
+                color: palette.white,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '0.75rem',
+                boxShadow: '0 10px 20px rgba(184, 61, 63, 0.3)',
+                textDecoration: 'none',
+              }}
             >
               <Instagram size={24} />
               Instagram
             </a>
           </div>
 
-          <div className="text-center text-folk-blue/70 text-base leading-relaxed" style={{ fontSize: '1rem', lineHeight: '1.75' }}>
+          <div className="text-center text-folk-blue/70 text-base leading-relaxed" style={{ fontSize: '1rem', lineHeight: '1.75', color: palette.blueSoft }}>
             <p className="mb-3" style={{ marginBottom: '1rem' }}>
-              Телефон: <a href="tel:+79001234567" className="text-folk-red font-bold hover:underline" style={{ color: '#9E2A2B', fontWeight: 'bold' }}>+7 900 123 45 67</a>
+              Телефон:{' '}
+              <a href="tel:+79001234567" style={{ color: palette.red, fontWeight: 'bold', textDecoration: 'none' }}>
+                +7 900 123 45 67
+              </a>
             </p>
             <p>
-              Email: <a href="mailto:info@matreshkico.ru" className="text-folk-red font-bold hover:underline" style={{ color: '#9E2A2B', fontWeight: 'bold' }}>info@matreshkico.ru</a>
+              Email:{' '}
+              <a href="mailto:info@matreshkico.ru" style={{ color: palette.red, fontWeight: 'bold', textDecoration: 'none' }}>
+                info@matreshkico.ru
+              </a>
             </p>
           </div>
         </div>
