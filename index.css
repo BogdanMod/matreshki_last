@@ -98,11 +98,11 @@ body {
 /* Folk rug divider */
 .folk-rug-divider {
   width: 100%;
-  height: 26px;
+  height: 30px;
   background-color: #FFFDF7;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='26' viewBox='0 0 120 26'%3E%3Crect width='120' height='26' fill='%23FFFDF7'/%3E%3Cpath d='M0 13 L13 0 L26 13 L13 26 Z' fill='%23B83D3F'/%3E%3Cpath d='M26 13 L39 0 L52 13 L39 26 Z' fill='%23B83D3F'/%3E%3Cpath d='M52 13 L65 0 L78 13 L65 26 Z' fill='%23B83D3F'/%3E%3Cpath d='M78 13 L91 0 L104 13 L91 26 Z' fill='%23B83D3F'/%3E%3Cpath d='M104 13 L117 0 L120 3 L120 23 L117 26 Z' fill='%23B83D3F'/%3E%3Crect x='0' y='11' width='120' height='4' fill='%231F2E4D'/%3E%3Ccircle cx='13' cy='13' r='2.5' fill='%23FFF4B0'/%3E%3Ccircle cx='39' cy='13' r='2.5' fill='%23FFF4B0'/%3E%3Ccircle cx='65' cy='13' r='2.5' fill='%23FFF4B0'/%3E%3Ccircle cx='91' cy='13' r='2.5' fill='%23FFF4B0'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='30' viewBox='0 0 140 30'%3E%3Crect width='140' height='30' fill='%23FFFDF7'/%3E%3Crect y='4' width='140' height='4' fill='%230B0B0B'/%3E%3Crect y='22' width='140' height='4' fill='%230B0B0B'/%3E%3Cpath d='M0 15 L10 5 L20 15 L10 25 Z' fill='%23B83D3F' stroke='%230B0B0B' stroke-width='1'/%3E%3Cpath d='M20 15 L30 5 L40 15 L30 25 Z' fill='%23B83D3F' stroke='%230B0B0B' stroke-width='1'/%3E%3Cpath d='M40 15 L50 5 L60 15 L50 25 Z' fill='%23B83D3F' stroke='%230B0B0B' stroke-width='1'/%3E%3Cpath d='M60 15 L70 5 L80 15 L70 25 Z' fill='%23B83D3F' stroke='%230B0B0B' stroke-width='1'/%3E%3Cpath d='M80 15 L90 5 L100 15 L90 25 Z' fill='%23B83D3F' stroke='%230B0B0B' stroke-width='1'/%3E%3Cpath d='M100 15 L110 5 L120 15 L110 25 Z' fill='%23B83D3F' stroke='%230B0B0B' stroke-width='1'/%3E%3Cpath d='M120 15 L130 5 L140 15 L130 25 Z' fill='%23B83D3F' stroke='%230B0B0B' stroke-width='1'/%3E%3Crect x='0' y='13' width='140' height='4' fill='%231F2E4D'/%3E%3Ccircle cx='10' cy='15' r='2.2' fill='%23FFF4B0' stroke='%230B0B0B' stroke-width='0.8'/%3E%3Ccircle cx='30' cy='15' r='2.2' fill='%23FFF4B0' stroke='%230B0B0B' stroke-width='0.8'/%3E%3Ccircle cx='50' cy='15' r='2.2' fill='%23FFF4B0' stroke='%230B0B0B' stroke-width='0.8'/%3E%3Ccircle cx='70' cy='15' r='2.2' fill='%23FFF4B0' stroke='%230B0B0B' stroke-width='0.8'/%3E%3Ccircle cx='90' cy='15' r='2.2' fill='%23FFF4B0' stroke='%230B0B0B' stroke-width='0.8'/%3E%3Ccircle cx='110' cy='15' r='2.2' fill='%23FFF4B0' stroke='%230B0B0B' stroke-width='0.8'/%3E%3Ccircle cx='130' cy='15' r='2.2' fill='%23FFF4B0' stroke='%230B0B0B' stroke-width='0.8'/%3E%3C/svg%3E");
   background-repeat: repeat-x;
-  background-size: 120px 26px;
+  background-size: 140px 30px;
   border-radius: 999px;
   box-shadow: 0 6px 12px rgba(31, 46, 77, 0.08);
 }
