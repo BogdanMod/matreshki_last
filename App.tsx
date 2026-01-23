@@ -71,6 +71,19 @@ const tours: LinkItem[] = [
   },
 ];
 
+const galleryPhotos = [
+  'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&q=80&w=800',
+  'https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&q=80&w=800',
+  'https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&q=80&w=800',
+  'https://images.unsplash.com/photo-1470770903676-69b98201ea1c?auto=format&fit=crop&q=80&w=800',
+  'https://images.unsplash.com/photo-1433086966358-54859d0ed716?auto=format&fit=crop&q=80&w=800',
+  'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&q=80&w=800',
+  'https://images.unsplash.com/photo-1470770903676-69b98201ea1c?auto=format&fit=crop&q=80&w=800',
+  'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&q=80&w=800',
+  'https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?auto=format&fit=crop&q=80&w=800',
+  'https://images.unsplash.com/photo-1458668383970-8ddd3927deed?auto=format&fit=crop&q=80&w=800',
+];
+
 const palette = {
   red: '#B83D3F',
   redDark: '#8F2F31',
@@ -226,22 +239,16 @@ function App() {
   );
 
   const flowerSpots = [
-    { top: '12px', left: '10px', size: 44 },
-    { top: '16px', right: '12px', size: 46 },
-    { top: '26px', left: '28%', size: 36 },
-    { top: '24px', right: '30%', size: 34 },
-    { top: '48px', left: '6%', size: 42 },
-    { top: '52px', right: '6%', size: 40 },
-    { top: '64px', left: '42%', size: 46 },
-    { top: '70px', right: '40%', size: 44 },
-    { top: '88px', left: '18%', size: 38 },
-    { top: '92px', right: '20%', size: 40 },
-    { top: '110px', left: '50%', size: 56, transform: 'translateX(-50%)' },
-    { top: '120px', left: '8%', size: 36 },
-    { top: '124px', right: '8%', size: 36 },
-    { top: '138px', left: '30%', size: 34 },
-    { top: '140px', right: '32%', size: 34 },
-    { top: '156px', left: '50%', size: 40, transform: 'translateX(-50%)' },
+    { top: '10px', left: '6%', size: 38 },
+    { top: '12px', right: '6%', size: 38 },
+    { top: '22px', left: '26%', size: 32 },
+    { top: '20px', right: '28%', size: 30 },
+    { top: '38px', left: '12%', size: 34 },
+    { top: '40px', right: '12%', size: 34 },
+    { top: '52px', left: '50%', size: 40, transform: 'translateX(-50%)' },
+    { top: '68px', left: '20%', size: 30 },
+    { top: '70px', right: '18%', size: 30 },
+    { top: '86px', left: '50%', size: 34, transform: 'translateX(-50%)' },
   ];
 
   const FolkFlowerSmall = ({ style }: { style: React.CSSProperties }) => (
@@ -250,15 +257,16 @@ function App() {
       xmlns="http://www.w3.org/2000/svg"
       style={{ position: 'absolute', ...style }}
     >
-      <circle cx="60" cy="60" r="12" fill={palette.blue} />
-      <circle cx="60" cy="28" r="16" fill={palette.red} />
-      <circle cx="60" cy="92" r="16" fill={palette.red} />
-      <circle cx="28" cy="60" r="16" fill={palette.red} />
-      <circle cx="92" cy="60" r="16" fill={palette.red} />
-      <circle cx="42" cy="40" r="10" fill={palette.lemon} />
-      <circle cx="78" cy="40" r="10" fill={palette.lemon} />
-      <circle cx="42" cy="80" r="10" fill={palette.lemon} />
-      <circle cx="78" cy="80" r="10" fill={palette.lemon} />
+      <circle cx="60" cy="60" r="10" fill={palette.blue} />
+      <circle cx="60" cy="24" r="14" fill={palette.red} />
+      <circle cx="60" cy="96" r="14" fill={palette.red} />
+      <circle cx="24" cy="60" r="14" fill={palette.red} />
+      <circle cx="96" cy="60" r="14" fill={palette.red} />
+      <circle cx="38" cy="38" r="8" fill={palette.lemon} />
+      <circle cx="82" cy="38" r="8" fill={palette.lemon} />
+      <circle cx="38" cy="82" r="8" fill={palette.lemon} />
+      <circle cx="82" cy="82" r="8" fill={palette.lemon} />
+      <circle cx="60" cy="60" r="4" fill={palette.cream} />
     </svg>
   );
 
@@ -341,7 +349,7 @@ function App() {
         <div
           style={{
             width: '100%',
-            height: '210px',
+            height: '150px',
             backgroundColor: palette.lemon,
             borderBottomLeftRadius: '32px',
             borderBottomRightRadius: '32px',
@@ -371,8 +379,8 @@ function App() {
               left: 0,
               right: 0,
               bottom: 0,
-              height: '70px',
-              background: 'linear-gradient(180deg, rgba(255, 244, 176, 0) 0%, rgba(255, 244, 176, 0.8) 70%)',
+              height: '48px',
+              background: 'linear-gradient(180deg, rgba(255, 244, 176, 0) 0%, rgba(255, 244, 176, 0.9) 70%)',
             }}
           />
         </div>
@@ -1032,6 +1040,47 @@ function App() {
 
       <SectionDivider />
 
+      {/* Галерея */}
+      <section
+        id="gallery"
+        className="bg-folk-cream px-6"
+        style={{ backgroundColor: palette.white, paddingTop: '4.2rem', paddingBottom: '4.2rem' }}
+      >
+        <div className="max-w-md mx-auto" style={{ maxWidth: '100%', paddingLeft: '1.5rem', paddingRight: '1.5rem' }}>
+          <SectionHeading title="Галерея" />
+          <SectionLead text="10 мгновений природы и путешествий — для вдохновения и настроения." />
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
+              gap: '0.75rem',
+            }}
+          >
+            {galleryPhotos.map((photo, index) => (
+              <div
+                key={`${photo}-${index}`}
+                style={{
+                  borderRadius: '16px',
+                  overflow: 'hidden',
+                  boxShadow: '0 10px 22px rgba(31, 46, 77, 0.12)',
+                  border: '1px solid rgba(184, 61, 63, 0.08)',
+                  aspectRatio: index % 5 === 0 ? '4/5' : '1/1',
+                }}
+              >
+                <img
+                  src={photo}
+                  alt={`Природа ${index + 1}`}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                  loading="lazy"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <SectionDivider />
+
       {/* Связаться с нами */}
       <section
         ref={contactRef}
@@ -1116,51 +1165,62 @@ function App() {
           {/* Footer */}
       <footer className="bg-folk-red py-8 px-6" style={{ backgroundColor: '#142033' }}>
         <div className="max-w-md mx-auto text-center" style={{ maxWidth: '100%', paddingLeft: '1.5rem', paddingRight: '1.5rem' }}>
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '0.6rem', marginBottom: '1rem' }}>
-            {[
-              { href: 'https://instagram.com/matreshkico', icon: <Instagram size={16} />, label: 'Instagram' },
-              { href: 'https://t.me/matreshkico', icon: <Send size={16} />, label: 'Telegram' },
-            ].map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={item.label}
-                style={{
-                  width: '32px',
-                  height: '32px',
-                  borderRadius: '999px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  backgroundColor: 'rgba(255, 244, 176, 0.12)',
-                  color: '#FFFDF7',
-                  border: '1px solid rgba(255, 244, 176, 0.3)',
-                  textDecoration: 'none',
-                }}
-              >
-                {item.icon}
-              </a>
-            ))}
-          </div>
-          <p style={{ margin: 0, color: 'rgba(255, 253, 247, 0.8)', fontSize: '0.75rem', letterSpacing: '0.08em' }}>
-            Основано в 2023
-          </p>
-          <a
-            href="#"
+          <div
             style={{
-              display: 'inline-block',
-              marginTop: '0.6rem',
-              color: 'rgba(255, 253, 247, 0.7)',
-              fontSize: '0.7rem',
-              textDecoration: 'none',
-              letterSpacing: '0.08em',
-              textTransform: 'uppercase',
+              backgroundColor: 'rgba(255, 253, 247, 0.05)',
+              borderRadius: '20px',
+              padding: '1.4rem 1.2rem',
+              border: '1px solid rgba(255, 244, 176, 0.18)',
+              boxShadow: '0 16px 28px rgba(10, 20, 36, 0.35)',
             }}
           >
-            Политика конфиденциальности
-          </a>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '0.6rem', marginBottom: '0.9rem' }}>
+              {[
+                { href: 'https://instagram.com/matreshkico', icon: <Instagram size={15} />, label: 'Instagram' },
+                { href: 'https://t.me/matreshkico', icon: <Send size={15} />, label: 'Telegram' },
+                { href: 'mailto:info@matreshkico.ru', icon: <MessageCircle size={15} />, label: 'Email' },
+              ].map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={item.label}
+                  style={{
+                    width: '30px',
+                    height: '30px',
+                    borderRadius: '10px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    backgroundColor: 'rgba(255, 244, 176, 0.16)',
+                    color: '#FFFDF7',
+                    border: '1px solid rgba(255, 244, 176, 0.3)',
+                    textDecoration: 'none',
+                  }}
+                >
+                  {item.icon}
+                </a>
+              ))}
+            </div>
+            <p style={{ margin: 0, color: 'rgba(255, 253, 247, 0.85)', fontSize: '0.78rem', letterSpacing: '0.08em' }}>
+              Основано в 2023
+            </p>
+            <a
+              href="#"
+              style={{
+                display: 'inline-block',
+                marginTop: '0.65rem',
+                color: 'rgba(255, 253, 247, 0.7)',
+                fontSize: '0.7rem',
+                textDecoration: 'none',
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+              }}
+            >
+              Политика конфиденциальности
+            </a>
+          </div>
         </div>
       </footer>
     </div>
