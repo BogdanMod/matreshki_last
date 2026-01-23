@@ -877,6 +877,7 @@ function App() {
               padding: '2rem 1.4rem 2.1rem 1.4rem',
             }}
           >
+            <div className="rug-paper-tear" />
             <SectionHeading title="Почему именно мы" />
             <SectionLead text="Мы бережно собираем каждый тур, чтобы он чувствовался как забота." />
             <div className="space-y-6" style={{ gap: '1.5rem' }}>

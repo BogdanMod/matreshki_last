@@ -139,3 +139,55 @@ body {
   background: linear-gradient(180deg, rgba(255,255,255,0.35), rgba(0,0,0,0.04));
 }
 
+/* Shadow cast on rug */
+.rug-paper-sheet::after {
+  content: "";
+  position: absolute;
+  left: -12px;
+  top: 22px;
+  width: 14px;
+  height: calc(100% - 44px);
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0));
+  border-radius: 10px;
+}
+
+.rug-paper-tear {
+  position: absolute;
+  left: -6px;
+  top: 34px;
+  width: 14px;
+  height: calc(100% - 68px);
+  background: #F4EBDD;
+  border-left: 2px solid rgba(154, 27, 33, 0.7);
+  clip-path: polygon(
+    100% 0%,
+    60% 4%,
+    90% 8%,
+    55% 12%,
+    95% 16%,
+    60% 20%,
+    92% 24%,
+    58% 28%,
+    96% 32%,
+    60% 36%,
+    92% 40%,
+    58% 44%,
+    96% 48%,
+    60% 52%,
+    92% 56%,
+    58% 60%,
+    96% 64%,
+    60% 68%,
+    92% 72%,
+    58% 76%,
+    96% 80%,
+    60% 84%,
+    92% 88%,
+    58% 92%,
+    100% 96%,
+    100% 100%,
+    0% 100%,
+    0% 0%
+  );
+}
+
