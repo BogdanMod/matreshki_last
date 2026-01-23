@@ -223,6 +223,7 @@ function App() {
         <span style={{ width: '6px', height: '6px', backgroundColor: accentColor, borderRadius: '999px' }} />
         <span style={{ width: '18px', height: '2px', backgroundColor: accentColor }} />
       </div>
+      <div className="section-ribbon" />
     </div>
   );
 
@@ -271,6 +272,7 @@ function App() {
     <svg
       viewBox="0 0 120 120"
       xmlns="http://www.w3.org/2000/svg"
+      className="hero-flower"
       style={{ position: 'absolute', ...style }}
     >
       {/* Outer petals */}
@@ -385,6 +387,7 @@ function App() {
       
       {/* Hero Section */}
       <div
+        className="folk-noise"
         style={{
           maxWidth: '100%',
           paddingLeft: '1.25rem',
@@ -421,8 +424,10 @@ function App() {
                 right: spot.right,
                 width: `${spot.size}px`,
                 height: `${spot.size}px`,
-                transform: spot.transform,
+                transform: spot.transform ?? 'translateX(0)',
+                ['--flower-transform' as any]: spot.transform ?? 'translateX(0)',
                 opacity: 0.95,
+                animationDelay: `${index * 0.15}s`,
               }}
             />
           ))}
@@ -648,7 +653,7 @@ function App() {
       <section
         ref={aboutRef}
         id="about"
-        className="bg-folk-red px-6"
+        className="bg-folk-red px-6 folk-noise"
         style={{ backgroundColor: palette.red, paddingTop: '4.2rem', paddingBottom: '4.2rem' }}
       >
         <div className="max-w-md mx-auto" style={{ maxWidth: '100%', paddingLeft: '1.5rem', paddingRight: '1.5rem' }}>
@@ -690,7 +695,8 @@ function App() {
               </div>
             ))}
           </div>
-          <div style={contentCardStyle}>
+          <div style={{ ...contentCardStyle, position: 'relative' }}>
+            <div className="folk-stamp">Авторский</div>
             <div className="space-y-6 text-base leading-relaxed" style={{ fontSize: '1rem', lineHeight: '1.75', color: palette.blueSoft }}>
               <p>
                 Matreshki&Co — женское турагентство с русским характером. Мы создаём путешествия,
@@ -719,7 +725,7 @@ function App() {
       <section
         ref={authorRef}
         id="author"
-        className="bg-folk-cream px-6"
+        className="bg-folk-cream px-6 folk-noise"
         style={{ backgroundColor: palette.white, paddingTop: '4.2rem', paddingBottom: '4.2rem' }}
       >
         <div className="max-w-md mx-auto" style={{ maxWidth: '100%', paddingLeft: '1.5rem', paddingRight: '1.5rem' }}>
@@ -732,8 +738,10 @@ function App() {
               padding: '1.6rem',
               border: '1px solid rgba(184, 61, 63, 0.12)',
               boxShadow: '0 16px 32px rgba(31, 46, 77, 0.12)',
+              position: 'relative',
             }}
           >
+            <div className="folk-stamp">С любовью</div>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: '0.8rem' }}>
               <div
                 style={{
@@ -855,7 +863,7 @@ function App() {
       <section
         ref={whyUsRef}
         id="why-us"
-        className="bg-folk-red px-6"
+        className="bg-folk-red px-6 folk-noise"
         style={{ backgroundColor: palette.cream, paddingTop: '4.2rem', paddingBottom: '4.2rem', paddingLeft: 0, paddingRight: '1rem' }}
       >
         <div
@@ -952,7 +960,7 @@ function App() {
       <section
         ref={whoSuitsRef}
         id="who-suits"
-        className="bg-folk-cream px-6"
+        className="bg-folk-cream px-6 folk-noise"
         style={{ backgroundColor: palette.white, paddingTop: '4.2rem', paddingBottom: '4.2rem' }}
       >
         <div className="max-w-md mx-auto" style={{ maxWidth: '100%', paddingLeft: '1.5rem', paddingRight: '1.5rem' }}>
@@ -1097,7 +1105,7 @@ function App() {
       <section
         ref={toursRef}
         id="tours"
-        className="bg-folk-red px-6"
+        className="bg-folk-red px-6 folk-noise"
         style={{ backgroundColor: palette.red, paddingTop: '4.2rem', paddingBottom: '4.2rem' }}
       >
         <div className="max-w-md mx-auto" style={{ maxWidth: '100%', paddingLeft: '1.5rem', paddingRight: '1.5rem' }}>
@@ -1147,8 +1155,10 @@ function App() {
                   display: 'flex',
                   flexDirection: 'column',
                   gap: '1rem',
+                  position: 'relative',
                 }}
               >
+                <div className="folk-stamp">Ручная работа</div>
                 <div
                   style={{
                     display: 'flex',
@@ -1250,7 +1260,7 @@ function App() {
       {/* Галерея */}
       <section
         id="gallery"
-        className="bg-folk-cream px-6"
+        className="bg-folk-cream px-6 folk-noise"
         style={{ backgroundColor: palette.white, paddingTop: '4.2rem', paddingBottom: '4.2rem' }}
       >
         <div className="max-w-md mx-auto" style={{ maxWidth: '100%', paddingLeft: '1.5rem', paddingRight: '1.5rem' }}>
@@ -1292,7 +1302,7 @@ function App() {
       <section
         ref={contactRef}
         id="contact"
-        className="bg-folk-cream px-6"
+        className="bg-folk-cream px-6 folk-noise"
         style={{ backgroundColor: palette.white, paddingTop: '4.2rem', paddingBottom: '4.2rem' }}
       >
         <div className="max-w-md mx-auto" style={{ maxWidth: '100%', paddingLeft: '1.5rem', paddingRight: '1.5rem' }}>
