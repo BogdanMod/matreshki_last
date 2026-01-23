@@ -856,11 +856,20 @@ function App() {
         ref={whyUsRef}
         id="why-us"
         className="bg-folk-red px-6"
-        style={{ backgroundColor: palette.red, paddingTop: '4.2rem', paddingBottom: '4.2rem' }}
+        style={{ backgroundColor: palette.cream, paddingTop: '4.2rem', paddingBottom: '4.2rem' }}
       >
-        <div className="max-w-md mx-auto" style={{ maxWidth: '100%', paddingLeft: '1.5rem', paddingRight: '1.5rem' }}>
-          <SectionHeading title="Почему именно мы" color={palette.cream} accentColor={palette.cream} />
-          <SectionLead text="Мы бережно собираем каждый тур, чтобы он чувствовался как забота." color={palette.cream} />
+        <div
+          className="max-w-md mx-auto rug-paper-bg"
+          style={{
+            maxWidth: '100%',
+            paddingLeft: '1.5rem',
+            paddingRight: '1.5rem',
+            paddingTop: '2.2rem',
+            paddingBottom: '2.2rem',
+          }}
+        >
+          <SectionHeading title="Почему именно мы" />
+          <SectionLead text="Мы бережно собираем каждый тур, чтобы он чувствовался как забота." />
           <div className="space-y-6" style={{ gap: '1.5rem' }}>
             {[
               {
