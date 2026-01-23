@@ -693,7 +693,7 @@ function App() {
               </span>
             ))}
           </div>
-          <div style={contentCardStyle}>
+          <div style={{ ...contentCardStyle, marginTop: '0.8rem' }}>
             <div className="space-y-6 text-base leading-relaxed" style={{ fontSize: '1rem', lineHeight: '1.75', color: palette.blueSoft }}>
               <p>
                 Меня зовут Александрия. Я более 10 лет путешествую и собираю лучшие маршруты,
@@ -867,9 +867,111 @@ function App() {
           <SectionHeading title="Наши туры" />
           <SectionLead text="Классика, природа, уютные города — выбирайте направление, а мы позаботимся обо всём." />
           
+          <div
+            style={{
+              display: 'flex',
+              gap: '0.6rem',
+              flexWrap: 'wrap',
+              justifyContent: 'center',
+              marginBottom: '2rem',
+            }}
+          >
+            {['История', 'Природа', 'Комфорт', 'Атмосфера'].map((label) => (
+              <span
+                key={label}
+                style={{
+                  padding: '0.4rem 0.75rem',
+                  borderRadius: '999px',
+                  backgroundColor: palette.white,
+                  border: '1px solid rgba(184, 61, 63, 0.15)',
+                  color: palette.blue,
+                  fontSize: '0.72rem',
+                  fontWeight: 600,
+                }}
+              >
+                {label}
+              </span>
+            ))}
+          </div>
+
           <div className="flex flex-col gap-6 mb-12" style={{ gap: '1.5rem', marginBottom: '3rem' }}>
-            {tours.map((tour) => (
-              <LinkCard key={tour.id} item={tour} variant="dark" />
+            {tours.map((tour, index) => (
+              <div
+                key={tour.id}
+                style={{
+                  backgroundColor: palette.white,
+                  borderRadius: '20px',
+                  padding: '1.4rem',
+                  boxShadow: '0 14px 26px rgba(31, 46, 77, 0.1)',
+                  border: '1px solid rgba(184, 61, 63, 0.1)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '1rem',
+                }}
+              >
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.9rem',
+                  }}
+                >
+                  <div
+                    style={{
+                      width: '46px',
+                      height: '46px',
+                      borderRadius: '14px',
+                      backgroundColor: index % 2 === 0 ? palette.lemon : 'rgba(184, 61, 63, 0.1)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      color: palette.red,
+                    }}
+                  >
+                    {React.cloneElement(tour.icon as React.ReactElement<any>, { size: 22 })}
+                  </div>
+                  <div>
+                    <h3
+                      style={{
+                        margin: 0,
+                        fontSize: '1.1rem',
+                        color: palette.blue,
+                        fontWeight: 700,
+                      }}
+                    >
+                      {tour.title}
+                    </h3>
+                    {tour.subtitle && (
+                      <p style={{ margin: 0, marginTop: '0.25rem', color: palette.red, fontSize: '0.78rem', fontWeight: 600 }}>
+                        {tour.subtitle}
+                      </p>
+                    )}
+                  </div>
+                </div>
+
+                <p style={{ margin: 0, color: palette.blueSoft, lineHeight: '1.7', fontSize: '0.95rem' }}>
+                  Тёплый формат тура с комфортным ритмом, культурными открытиями и временем на отдых.
+                </p>
+
+                <button
+                  onClick={() => scrollToSection('contact')}
+                  style={{
+                    alignSelf: 'flex-start',
+                    padding: '0.55rem 1.3rem',
+                    borderRadius: '999px',
+                    border: '1px solid rgba(184, 61, 63, 0.25)',
+                    backgroundColor: palette.lemon,
+                    color: palette.blue,
+                    fontSize: '0.78rem',
+                    fontWeight: 700,
+                    letterSpacing: '0.12em',
+                    textTransform: 'uppercase',
+                    cursor: 'pointer',
+                  }}
+                >
+                  Подробнее
+                </button>
+              </div>
             ))}
           </div>
 
