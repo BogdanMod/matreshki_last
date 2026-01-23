@@ -198,8 +198,33 @@ function App() {
     border: '1px solid rgba(184, 61, 63, 0.08)',
   } as const;
 
-  const floralPattern =
-    'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22120%22 height=%22120%22 viewBox=%220 0 120 120%22%3E%3Crect width=%22120%22 height=%22120%22 fill=%22%23FFF4B0%22/%3E%3Cg fill=%22%23B83D3F%22 fill-opacity=%220.9%22%3E%3Ccircle cx=%2220%22 cy=%2220%22 r=%228%22/%3E%3Ccircle cx=%2250%22 cy=%2225%22 r=%226%22/%3E%3Ccircle cx=%2285%22 cy=%2218%22 r=%227%22/%3E%3Ccircle cx=%2210%22 cy=%2265%22 r=%227%22/%3E%3Ccircle cx=%2245%22 cy=%2260%22 r=%229%22/%3E%3Ccircle cx=%2280%22 cy=%2265%22 r=%226%22/%3E%3Ccircle cx=%2220%22 cy=%22100%22 r=%226%22/%3E%3Ccircle cx=%2260%22 cy=%2295%22 r=%227%22/%3E%3Ccircle cx=%2295%22 cy=%22105%22 r=%225%22/%3E%3C/g%3E%3Cg fill=%22%231F2E4D%22 fill-opacity=%220.75%22%3E%3Ccircle cx=%2235%22 cy=%2235%22 r=%223%22/%3E%3Ccircle cx=%2270%22 cy=%2238%22 r=%223%22/%3E%3Ccircle cx=%22100%22 cy=%2245%22 r=%223%22/%3E%3Ccircle cx=%2230%22 cy=%2275%22 r=%223%22/%3E%3Ccircle cx=%2270%22 cy=%2280%22 r=%223%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E';
+  const flowerSpots = [
+    { top: '18px', left: '16px', size: 48 },
+    { top: '24px', right: '18px', size: 44 },
+    { top: '70px', left: '28px', size: 40 },
+    { top: '78px', right: '24px', size: 52 },
+    { top: '110px', left: '50%', size: 58, transform: 'translateX(-50%)' },
+    { top: '130px', left: '18%', size: 40 },
+    { top: '135px', right: '14%', size: 42 },
+  ];
+
+  const FolkFlowerSmall = ({ style }: { style: React.CSSProperties }) => (
+    <svg
+      viewBox="0 0 120 120"
+      xmlns="http://www.w3.org/2000/svg"
+      style={{ position: 'absolute', ...style }}
+    >
+      <circle cx="60" cy="60" r="12" fill={palette.blue} />
+      <circle cx="60" cy="28" r="16" fill={palette.red} />
+      <circle cx="60" cy="92" r="16" fill={palette.red} />
+      <circle cx="28" cy="60" r="16" fill={palette.red} />
+      <circle cx="92" cy="60" r="16" fill={palette.red} />
+      <circle cx="42" cy="40" r="10" fill={palette.lemon} />
+      <circle cx="78" cy="40" r="10" fill={palette.lemon} />
+      <circle cx="42" cy="80" r="10" fill={palette.lemon} />
+      <circle cx="78" cy="80" r="10" fill={palette.lemon} />
+    </svg>
+  );
 
   console.log('[APP] Render check - error:', error, 'isLoading:', isLoading, 'isMobile:', isMobile);
   
@@ -282,15 +307,29 @@ function App() {
             width: '100%',
             height: '190px',
             backgroundColor: palette.lemon,
-            backgroundImage: `url("${floralPattern}")`,
-            backgroundRepeat: 'repeat',
-            backgroundSize: '120px 120px',
             borderBottomLeftRadius: '32px',
             borderBottomRightRadius: '32px',
             boxShadow: 'inset 0 -12px 18px rgba(184, 61, 63, 0.08)',
             marginBottom: '1.75rem',
+            position: 'relative',
+            overflow: 'hidden',
           }}
-        />
+        >
+          {flowerSpots.map((spot, index) => (
+            <FolkFlowerSmall
+              key={`${spot.top}-${spot.left ?? spot.right}-${index}`}
+              style={{
+                top: spot.top,
+                left: spot.left,
+                right: spot.right,
+                width: `${spot.size}px`,
+                height: `${spot.size}px`,
+                transform: spot.transform,
+                opacity: 0.95,
+              }}
+            />
+          ))}
+        </div>
         <div
           style={{
             backgroundColor: palette.red,
@@ -315,6 +354,7 @@ function App() {
             gap: '1rem',
             marginBottom: '1.5rem',
             width: '100%',
+            textAlign: 'center',
           }}
         >
           <div style={{ flexShrink: 0 }}>
@@ -330,6 +370,7 @@ function App() {
                 margin: 0,
                 lineHeight: '1.2',
                 letterSpacing: '0.02em',
+                textAlign: 'center',
               }}
             >
               Matreshki&Co
