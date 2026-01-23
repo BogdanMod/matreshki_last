@@ -1155,10 +1155,8 @@ function App() {
                   display: 'flex',
                   flexDirection: 'column',
                   gap: '1rem',
-                  position: 'relative',
                 }}
               >
-                <div className="folk-stamp">Ручная работа</div>
                 <div
                   style={{
                     display: 'flex',
