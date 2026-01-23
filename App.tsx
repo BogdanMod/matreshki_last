@@ -165,12 +165,12 @@ function App() {
   );
 
   const SectionHeading = ({ title, color = palette.blue }: { title: string; color?: string }) => (
-    <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+    <div style={{ textAlign: 'center', marginBottom: '2.25rem' }}>
       <h2
         style={{
           fontFamily: 'Georgia, "Times New Roman", serif',
-          fontSize: '1.85rem',
-          letterSpacing: '0.16em',
+          fontSize: '1.75rem',
+          letterSpacing: '0.18em',
           textTransform: 'uppercase',
           margin: 0,
           color,
@@ -180,23 +180,42 @@ function App() {
       </h2>
       <div
         style={{
-          width: '64px',
-          height: '3px',
-          borderRadius: '999px',
-          backgroundColor: palette.red,
-          margin: '0.9rem auto 0',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '0.4rem',
+          marginTop: '0.9rem',
         }}
-      />
+      >
+        <span style={{ width: '18px', height: '2px', backgroundColor: palette.red }} />
+        <span style={{ width: '6px', height: '6px', backgroundColor: palette.red, borderRadius: '999px' }} />
+        <span style={{ width: '18px', height: '2px', backgroundColor: palette.red }} />
+      </div>
     </div>
   );
 
   const contentCardStyle = {
     backgroundColor: palette.white,
-    borderRadius: '20px',
+    borderRadius: '22px',
     padding: '1.5rem',
-    boxShadow: '0 12px 24px rgba(31, 46, 77, 0.08)',
+    boxShadow: '0 14px 28px rgba(31, 46, 77, 0.08)',
     border: '1px solid rgba(184, 61, 63, 0.08)',
   } as const;
+
+  const SectionLead = ({ text }: { text: string }) => (
+    <p
+      style={{
+        textAlign: 'center',
+        fontSize: '1rem',
+        lineHeight: '1.8',
+        color: palette.blueSoft,
+        margin: 0,
+        marginBottom: '2rem',
+      }}
+    >
+      {text}
+    </p>
+  );
 
   const flowerSpots = [
     { top: '18px', left: '16px', size: 48 },
@@ -293,7 +312,7 @@ function App() {
           paddingLeft: '1.25rem',
           paddingRight: '1.25rem',
           paddingTop: '0',
-          paddingBottom: '2.5rem',
+          paddingBottom: '3rem',
           background: `linear-gradient(180deg, ${palette.lemon} 0%, ${palette.cream} 70%)`,
           display: 'flex',
           flexDirection: 'column',
@@ -305,7 +324,7 @@ function App() {
         <div
           style={{
             width: '100%',
-            height: '190px',
+            height: '210px',
             backgroundColor: palette.lemon,
             borderBottomLeftRadius: '32px',
             borderBottomRightRadius: '32px',
@@ -329,6 +348,16 @@ function App() {
               }}
             />
           ))}
+          <div
+            style={{
+              position: 'absolute',
+              left: 0,
+              right: 0,
+              bottom: 0,
+              height: '70px',
+              background: 'linear-gradient(180deg, rgba(255, 244, 176, 0) 0%, rgba(255, 244, 176, 0.8) 70%)',
+            }}
+          />
         </div>
         <div
           style={{
@@ -343,7 +372,7 @@ function App() {
             boxShadow: '0 6px 14px rgba(184, 61, 63, 0.35)',
           }}
         >
-          Женские туры по России
+          Женские путешествия
         </div>
 
         <div
@@ -439,9 +468,36 @@ function App() {
         <div
           style={{
             display: 'flex',
+            gap: '0.75rem',
+            marginTop: '1.2rem',
+            flexWrap: 'wrap',
+            justifyContent: 'center',
+          }}
+        >
+          {['Камерные группы', 'Русские традиции', 'Безопасный комфорт'].map((label) => (
+            <span
+              key={label}
+              style={{
+                padding: '0.45rem 0.85rem',
+                borderRadius: '999px',
+                backgroundColor: palette.white,
+                border: '1px solid rgba(184, 61, 63, 0.15)',
+                color: palette.blue,
+                fontSize: '0.75rem',
+                fontWeight: 600,
+              }}
+            >
+              {label}
+            </span>
+          ))}
+        </div>
+
+        <div
+          style={{
+            display: 'flex',
             flexDirection: 'column',
             gap: '1.25rem',
-            marginTop: '2.5rem',
+            marginTop: '2.2rem',
             paddingBottom: '1.5rem',
             width: '100%',
             maxWidth: '28rem',
@@ -513,10 +569,44 @@ function App() {
         ref={aboutRef}
         id="about"
         className="bg-folk-red px-6"
-        style={{ backgroundColor: palette.cream, paddingTop: '4.5rem', paddingBottom: '4.5rem' }}
+        style={{ backgroundColor: palette.cream, paddingTop: '4.2rem', paddingBottom: '4.2rem' }}
       >
         <div className="max-w-md mx-auto" style={{ maxWidth: '100%', paddingLeft: '1.5rem', paddingRight: '1.5rem' }}>
           <SectionHeading title="О НАС" />
+          <SectionLead text="Русская эстетика, внимательный сервис и путешествия, которые хочется пересказывать." />
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: '1fr',
+              gap: '0.9rem',
+              marginBottom: '1.8rem',
+            }}
+          >
+            {[
+              { icon: <MapPin size={18} />, label: 'Маршруты по России' },
+              { icon: <Heart size={18} />, label: 'Тёплая атмосфера' },
+              { icon: <Star size={18} />, label: 'Проверенные гиды' },
+            ].map((item) => (
+              <div
+                key={item.label}
+                style={{
+                  backgroundColor: palette.white,
+                  borderRadius: '16px',
+                  padding: '0.9rem 1rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.7rem',
+                  boxShadow: '0 10px 22px rgba(31, 46, 77, 0.06)',
+                  border: '1px solid rgba(184, 61, 63, 0.08)',
+                  color: palette.blue,
+                  fontWeight: 600,
+                }}
+              >
+                <span style={{ color: palette.red }}>{item.icon}</span>
+                <span style={{ fontSize: '0.95rem' }}>{item.label}</span>
+              </div>
+            ))}
+          </div>
           <div style={contentCardStyle}>
             <div className="space-y-6 text-base leading-relaxed" style={{ fontSize: '1rem', lineHeight: '1.75', color: palette.blueSoft }}>
               <p>
@@ -547,10 +637,11 @@ function App() {
         ref={authorRef}
         id="author"
         className="bg-folk-cream px-6"
-        style={{ backgroundColor: palette.white, paddingTop: '4.5rem', paddingBottom: '4.5rem' }}
+        style={{ backgroundColor: palette.white, paddingTop: '4.2rem', paddingBottom: '4.2rem' }}
       >
         <div className="max-w-md mx-auto" style={{ maxWidth: '100%', paddingLeft: '1.5rem', paddingRight: '1.5rem' }}>
           <SectionHeading title="Об авторе" />
+          <SectionLead text="Личное сопровождение, тёплая атмосфера и опыт, проверенный годами." />
           <div className="flex flex-col items-center mb-10" style={{ marginBottom: '2.5rem' }}>
             <div
               className="w-40 h-40 rounded-full border-4 border-folk-red overflow-hidden mb-6 shadow-lg"
@@ -571,6 +662,36 @@ function App() {
             <p className="text-folk-blue/60 text-sm italic" style={{ fontSize: '0.9rem', color: palette.blueSoft }}>
               Основательница и куратор авторских маршрутов
             </p>
+          </div>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              gap: '0.8rem',
+              flexWrap: 'wrap',
+              marginBottom: '2rem',
+            }}
+          >
+            {[
+              { label: '10+ лет опыта' },
+              { label: 'Комфорт 24/7' },
+              { label: 'Малые группы' },
+            ].map((item) => (
+              <span
+                key={item.label}
+                style={{
+                  padding: '0.45rem 0.9rem',
+                  borderRadius: '999px',
+                  backgroundColor: palette.lemon,
+                  border: '1px solid rgba(184, 61, 63, 0.15)',
+                  color: palette.blue,
+                  fontSize: '0.78rem',
+                  fontWeight: 600,
+                }}
+              >
+                {item.label}
+              </span>
+            ))}
           </div>
           <div style={contentCardStyle}>
             <div className="space-y-6 text-base leading-relaxed" style={{ fontSize: '1rem', lineHeight: '1.75', color: palette.blueSoft }}>
@@ -598,10 +719,11 @@ function App() {
         ref={whyUsRef}
         id="why-us"
         className="bg-folk-red px-6"
-        style={{ backgroundColor: palette.cream, paddingTop: '4.5rem', paddingBottom: '4.5rem' }}
+        style={{ backgroundColor: palette.cream, paddingTop: '4.2rem', paddingBottom: '4.2rem' }}
       >
         <div className="max-w-md mx-auto" style={{ maxWidth: '100%', paddingLeft: '1.5rem', paddingRight: '1.5rem' }}>
           <SectionHeading title="Почему именно мы" />
+          <SectionLead text="Мы бережно собираем каждый тур, чтобы он чувствовался как забота." />
           <div className="space-y-6" style={{ gap: '1.5rem' }}>
             {[
               {
@@ -674,10 +796,11 @@ function App() {
         ref={whoSuitsRef}
         id="who-suits"
         className="bg-folk-cream px-6"
-        style={{ backgroundColor: palette.white, paddingTop: '4.5rem', paddingBottom: '4.5rem' }}
+        style={{ backgroundColor: palette.white, paddingTop: '4.2rem', paddingBottom: '4.2rem' }}
       >
         <div className="max-w-md mx-auto" style={{ maxWidth: '100%', paddingLeft: '1.5rem', paddingRight: '1.5rem' }}>
           <SectionHeading title="Кому мы подходим" />
+          <SectionLead text="Мы делаем путешествия мягкими и продуманными — это чувствуется уже в дороге." />
           
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
             <div style={{ ...contentCardStyle, backgroundColor: palette.cream }}>
@@ -738,14 +861,11 @@ function App() {
         ref={toursRef}
         id="tours"
         className="bg-folk-red px-6"
-        style={{ backgroundColor: palette.cream, paddingTop: '4.5rem', paddingBottom: '4.5rem' }}
+        style={{ backgroundColor: palette.cream, paddingTop: '4.2rem', paddingBottom: '4.2rem' }}
       >
         <div className="max-w-md mx-auto" style={{ maxWidth: '100%', paddingLeft: '1.5rem', paddingRight: '1.5rem' }}>
           <SectionHeading title="Наши туры" />
-          <p className="text-base text-center mb-10 leading-relaxed" style={{ fontSize: '1rem', lineHeight: '1.75', marginBottom: '2.5rem', color: palette.blueSoft }}>
-            Мы собрали лучшие направления для вдохновения — от классики до уютных природных маршрутов.
-            Выберите тур, а всё остальное мы возьмём на себя.
-          </p>
+          <SectionLead text="Классика, природа, уютные города — выбирайте направление, а мы позаботимся обо всём." />
           
           <div className="flex flex-col gap-6 mb-12" style={{ gap: '1.5rem', marginBottom: '3rem' }}>
             {tours.map((tour) => (
@@ -787,79 +907,78 @@ function App() {
         ref={contactRef}
         id="contact"
         className="bg-folk-cream px-6"
-        style={{ backgroundColor: palette.white, paddingTop: '4.5rem', paddingBottom: '4.5rem' }}
+        style={{ backgroundColor: palette.white, paddingTop: '4.2rem', paddingBottom: '4.2rem' }}
       >
         <div className="max-w-md mx-auto" style={{ maxWidth: '100%', paddingLeft: '1.5rem', paddingRight: '1.5rem' }}>
           <SectionHeading title="Связаться с нами" />
-          <p className="text-folk-blue/80 text-base text-center mb-10 leading-relaxed" style={{ fontSize: '1rem', lineHeight: '1.75', marginBottom: '2.5rem', color: palette.blueSoft }}>
-            Напишите нам любым удобным способом — мы быстро ответим, уточним ваши пожелания
-            и подберём лучший маршрут.
-          </p>
+          <SectionLead text="Напишите нам удобным способом — быстро ответим и подберём лучший маршрут." />
           
-          <div className="flex flex-col gap-5 mb-10" style={{ gap: '1.25rem', marginBottom: '2.5rem' }}>
-            <a
-              href="https://t.me/matreshkico"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                padding: '1.1rem',
-                fontSize: '0.95rem',
-                fontWeight: 700,
-                textTransform: 'uppercase',
-                letterSpacing: '0.16em',
-                borderRadius: '999px',
-                backgroundColor: palette.blue,
-                color: palette.white,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '0.75rem',
-                boxShadow: '0 10px 20px rgba(31, 46, 77, 0.25)',
-                textDecoration: 'none',
-              }}
-            >
-              <Send size={24} />
-              Telegram
-            </a>
-            <a
-              href="https://instagram.com/matreshkico"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                padding: '1.1rem',
-                fontSize: '0.95rem',
-                fontWeight: 700,
-                textTransform: 'uppercase',
-                letterSpacing: '0.16em',
-                borderRadius: '999px',
-                background: `linear-gradient(90deg, ${palette.red} 0%, #D46A6B 100%)`,
-                color: palette.white,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '0.75rem',
-                boxShadow: '0 10px 20px rgba(184, 61, 63, 0.3)',
-                textDecoration: 'none',
-              }}
-            >
-              <Instagram size={24} />
-              Instagram
-            </a>
-          </div>
+          <div style={{ ...contentCardStyle, padding: '1.6rem' }}>
+            <div className="flex flex-col gap-5 mb-10" style={{ gap: '1.1rem', marginBottom: '2rem' }}>
+              <a
+                href="https://t.me/matreshkico"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  padding: '1.05rem',
+                  fontSize: '0.92rem',
+                  fontWeight: 700,
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.16em',
+                  borderRadius: '999px',
+                  backgroundColor: palette.blue,
+                  color: palette.white,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '0.75rem',
+                  boxShadow: '0 10px 20px rgba(31, 46, 77, 0.25)',
+                  textDecoration: 'none',
+                }}
+              >
+                <Send size={22} />
+                Telegram
+              </a>
+              <a
+                href="https://instagram.com/matreshkico"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  padding: '1.05rem',
+                  fontSize: '0.92rem',
+                  fontWeight: 700,
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.16em',
+                  borderRadius: '999px',
+                  background: `linear-gradient(90deg, ${palette.red} 0%, #D46A6B 100%)`,
+                  color: palette.white,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '0.75rem',
+                  boxShadow: '0 10px 20px rgba(184, 61, 63, 0.3)',
+                  textDecoration: 'none',
+                }}
+              >
+                <Instagram size={22} />
+                Instagram
+              </a>
+            </div>
 
-          <div className="text-center text-folk-blue/70 text-base leading-relaxed" style={{ fontSize: '1rem', lineHeight: '1.75', color: palette.blueSoft }}>
-            <p className="mb-3" style={{ marginBottom: '1rem' }}>
-              Телефон:{' '}
-              <a href="tel:+79001234567" style={{ color: palette.red, fontWeight: 'bold', textDecoration: 'none' }}>
-                +7 900 123 45 67
-              </a>
-            </p>
-            <p>
-              Email:{' '}
-              <a href="mailto:info@matreshkico.ru" style={{ color: palette.red, fontWeight: 'bold', textDecoration: 'none' }}>
-                info@matreshkico.ru
-              </a>
-            </p>
+            <div className="text-center text-folk-blue/70 text-base leading-relaxed" style={{ fontSize: '1rem', lineHeight: '1.75', color: palette.blueSoft }}>
+              <p className="mb-3" style={{ marginBottom: '0.8rem' }}>
+                Телефон:{' '}
+                <a href="tel:+79001234567" style={{ color: palette.red, fontWeight: 'bold', textDecoration: 'none' }}>
+                  +7 900 123 45 67
+                </a>
+              </p>
+              <p style={{ margin: 0 }}>
+                Email:{' '}
+                <a href="mailto:info@matreshkico.ru" style={{ color: palette.red, fontWeight: 'bold', textDecoration: 'none' }}>
+                  info@matreshkico.ru
+                </a>
+              </p>
+            </div>
           </div>
         </div>
       </section>
