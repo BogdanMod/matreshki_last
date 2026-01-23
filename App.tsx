@@ -262,20 +262,25 @@ function App() {
       xmlns="http://www.w3.org/2000/svg"
       style={{ position: 'absolute', ...style }}
     >
-      <circle cx="60" cy="60" r="10" fill={palette.blue} />
-      <circle cx="60" cy="18" r="16" fill={palette.red} />
-      <circle cx="60" cy="102" r="16" fill={palette.red} />
-      <circle cx="18" cy="60" r="16" fill={palette.red} />
-      <circle cx="102" cy="60" r="16" fill={palette.red} />
-      <circle cx="32" cy="32" r="12" fill={palette.lemon} />
-      <circle cx="88" cy="32" r="12" fill={palette.lemon} />
-      <circle cx="32" cy="88" r="12" fill={palette.lemon} />
-      <circle cx="88" cy="88" r="12" fill={palette.lemon} />
-      <circle cx="60" cy="38" r="8" fill={palette.cream} />
-      <circle cx="60" cy="82" r="8" fill={palette.cream} />
-      <circle cx="38" cy="60" r="8" fill={palette.cream} />
-      <circle cx="82" cy="60" r="8" fill={palette.cream} />
-      <circle cx="60" cy="60" r="5" fill={palette.blueSoft} />
+      {/* Outer petals */}
+      <circle cx="60" cy="12" r="18" fill={palette.red} />
+      <circle cx="60" cy="108" r="18" fill={palette.red} />
+      <circle cx="12" cy="60" r="18" fill={palette.red} />
+      <circle cx="108" cy="60" r="18" fill={palette.red} />
+      <circle cx="26" cy="26" r="16" fill={palette.red} />
+      <circle cx="94" cy="26" r="16" fill={palette.red} />
+      <circle cx="26" cy="94" r="16" fill={palette.red} />
+      <circle cx="94" cy="94" r="16" fill={palette.red} />
+
+      {/* Inner petals */}
+      <circle cx="60" cy="26" r="12" fill={palette.redDark} />
+      <circle cx="60" cy="94" r="12" fill={palette.redDark} />
+      <circle cx="26" cy="60" r="12" fill={palette.redDark} />
+      <circle cx="94" cy="60" r="12" fill={palette.redDark} />
+
+      {/* Flower center */}
+      <circle cx="60" cy="60" r="14" fill={palette.lemon} />
+      <circle cx="60" cy="60" r="6" fill={palette.blue} />
     </svg>
   );
 
