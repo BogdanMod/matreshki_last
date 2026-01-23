@@ -183,9 +183,8 @@ function App() {
   };
 
   const SectionDivider = () => (
-    <div className="relative w-full overflow-hidden" style={{ marginTop: '3rem', marginBottom: '3rem' }}>
-      <div className="scalloped-border absolute -top-4 left-0 w-full z-10"></div>
-      <div className="lace-decoration absolute top-1 left-0 w-full z-20 opacity-50"></div>
+    <div style={{ marginTop: '3rem', marginBottom: '3rem', display: 'flex', justifyContent: 'center' }}>
+      <div className="folk-rug-divider" />
     </div>
   );
 
