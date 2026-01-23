@@ -859,18 +859,27 @@ function App() {
         style={{ backgroundColor: palette.cream, paddingTop: '4.2rem', paddingBottom: '4.2rem' }}
       >
         <div
-          className="max-w-md mx-auto rug-paper-bg"
+          className="max-w-md mx-auto"
           style={{
             maxWidth: '100%',
-            paddingLeft: '1.5rem',
-            paddingRight: '1.5rem',
-            paddingTop: '2.2rem',
-            paddingBottom: '2.2rem',
+            display: 'flex',
+            alignItems: 'stretch',
+            borderRadius: '20px',
+            overflow: 'hidden',
+            boxShadow: '0 18px 32px rgba(20, 20, 36, 0.15)',
           }}
         >
-          <SectionHeading title="Почему именно мы" />
-          <SectionLead text="Мы бережно собираем каждый тур, чтобы он чувствовался как забота." />
-          <div className="space-y-6" style={{ gap: '1.5rem' }}>
+          <div className="rug-strip-left" />
+          <div
+            className="rug-paper-sheet"
+            style={{
+              flex: 1,
+              padding: '2rem 1.4rem 2.1rem 1.4rem',
+            }}
+          >
+            <SectionHeading title="Почему именно мы" />
+            <SectionLead text="Мы бережно собираем каждый тур, чтобы он чувствовался как забота." />
+            <div className="space-y-6" style={{ gap: '1.5rem' }}>
             {[
               {
                 icon: <Heart size={24} />,
@@ -931,6 +940,7 @@ function App() {
                 </div>
               </div>
             ))}
+            </div>
           </div>
         </div>
       </section>
