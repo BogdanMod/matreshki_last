@@ -534,7 +534,7 @@ function App() {
           onClick={() => scrollToSection('contact')}
           style={{
             marginTop: '1.5rem',
-            backgroundColor: palette.red,
+            background: `linear-gradient(135deg, ${palette.red} 0%, ${palette.redDark} 100%)`,
             color: palette.white,
             padding: '0.9rem 2rem',
             borderRadius: '999px',
@@ -653,7 +653,7 @@ function App() {
       <section
         ref={aboutRef}
         id="about"
-        className="bg-folk-red px-6 folk-noise"
+        className="bg-folk-red px-6"
         style={{ backgroundColor: palette.red, paddingTop: '4.2rem', paddingBottom: '4.2rem' }}
       >
         <div className="max-w-md mx-auto" style={{ maxWidth: '100%', paddingLeft: '1.5rem', paddingRight: '1.5rem' }}>
@@ -863,7 +863,7 @@ function App() {
       <section
         ref={whyUsRef}
         id="why-us"
-        className="bg-folk-red px-6 folk-noise"
+        className="bg-folk-red px-6"
         style={{ backgroundColor: palette.cream, paddingTop: '4.2rem', paddingBottom: '4.2rem', paddingLeft: 0, paddingRight: '1rem' }}
       >
         <div
@@ -1009,11 +1009,11 @@ function App() {
                   { text: 'Ищете спокойный и красивый отдых в женской компании', icon: <Heart size={16} /> },
                   { text: 'Цените заботу, комфорт и внимательные детали', icon: <Star size={16} /> },
                   { text: 'Хотите вдохновения без суеты и плотных графиков', icon: <MapPin size={16} /> },
-                ].map((item) => (
+                ].map((item, index) => (
                   <div
                     key={item.text}
                     style={{
-                      backgroundColor: palette.white,
+                      backgroundColor: index % 2 === 0 ? palette.white : palette.cream,
                       borderRadius: '16px',
                       padding: '0.85rem 1rem',
                       border: '1px solid rgba(184, 61, 63, 0.1)',
@@ -1105,7 +1105,7 @@ function App() {
       <section
         ref={toursRef}
         id="tours"
-        className="bg-folk-red px-6 folk-noise"
+        className="bg-folk-red px-6"
         style={{ backgroundColor: palette.red, paddingTop: '4.2rem', paddingBottom: '4.2rem' }}
       >
         <div className="max-w-md mx-auto" style={{ maxWidth: '100%', paddingLeft: '1.5rem', paddingRight: '1.5rem' }}>
@@ -1155,6 +1155,7 @@ function App() {
                   display: 'flex',
                   flexDirection: 'column',
                   gap: '1rem',
+                  minHeight: '210px',
                 }}
               >
                 <div
@@ -1208,7 +1209,7 @@ function App() {
                     padding: '0.55rem 1.3rem',
                     borderRadius: '999px',
                     border: '1px solid rgba(184, 61, 63, 0.25)',
-                    backgroundColor: palette.lemon,
+                    background: `linear-gradient(135deg, ${palette.lemon} 0%, #FFE27A 100%)`,
                     color: palette.blue,
                     fontSize: '0.78rem',
                     fontWeight: 700,
@@ -1219,6 +1220,7 @@ function App() {
                 >
                   Подробнее
                 </button>
+                <div className="card-accent-line" />
               </div>
             ))}
           </div>
@@ -1240,7 +1242,7 @@ function App() {
                 textTransform: 'uppercase',
                 letterSpacing: '0.16em',
                 color: palette.red,
-                backgroundColor: palette.cream,
+                background: `linear-gradient(135deg, ${palette.cream} 0%, #FFF1D6 100%)`,
                 borderRadius: '999px',
                 border: `1px solid ${palette.cream}`,
                 boxShadow: '0 10px 20px rgba(31, 46, 77, 0.18)',
@@ -1277,7 +1279,7 @@ function App() {
                 style={{
                   borderRadius: '16px',
                   overflow: 'hidden',
-                  boxShadow: '0 10px 22px rgba(31, 46, 77, 0.12)',
+                  boxShadow: index === 1 || index === 6 ? '0 16px 28px rgba(31, 46, 77, 0.2)' : '0 8px 16px rgba(31, 46, 77, 0.1)',
                   border: '1px solid rgba(184, 61, 63, 0.08)',
                   aspectRatio: index % 5 === 0 ? '4/5' : '1/1',
                 }}
@@ -1320,7 +1322,7 @@ function App() {
                   textTransform: 'uppercase',
                   letterSpacing: '0.16em',
                   borderRadius: '999px',
-                  backgroundColor: palette.blue,
+                  background: `linear-gradient(135deg, ${palette.blue} 0%, ${palette.blueSoft} 100%)`,
                   color: palette.white,
                   display: 'flex',
                   alignItems: 'center',
@@ -1344,7 +1346,7 @@ function App() {
                   textTransform: 'uppercase',
                   letterSpacing: '0.16em',
                   borderRadius: '999px',
-                  background: `linear-gradient(90deg, ${palette.red} 0%, #D46A6B 100%)`,
+                  background: `linear-gradient(135deg, ${palette.red} 0%, #D46A6B 100%)`,
                   color: palette.white,
                   display: 'flex',
                   alignItems: 'center',
