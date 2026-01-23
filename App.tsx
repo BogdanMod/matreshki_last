@@ -239,16 +239,21 @@ function App() {
   );
 
   const flowerSpots = [
-    { top: '10px', left: '6%', size: 38 },
-    { top: '12px', right: '6%', size: 38 },
-    { top: '22px', left: '26%', size: 32 },
-    { top: '20px', right: '28%', size: 30 },
-    { top: '38px', left: '12%', size: 34 },
-    { top: '40px', right: '12%', size: 34 },
-    { top: '52px', left: '50%', size: 40, transform: 'translateX(-50%)' },
-    { top: '68px', left: '20%', size: 30 },
-    { top: '70px', right: '18%', size: 30 },
-    { top: '86px', left: '50%', size: 34, transform: 'translateX(-50%)' },
+    { top: '6px', left: '4%', size: 46 },
+    { top: '8px', right: '4%', size: 46 },
+    { top: '12px', left: '22%', size: 34 },
+    { top: '12px', right: '22%', size: 34 },
+    { top: '28px', left: '10%', size: 40 },
+    { top: '30px', right: '10%', size: 40 },
+    { top: '38px', left: '38%', size: 44 },
+    { top: '40px', right: '38%', size: 44 },
+    { top: '52px', left: '50%', size: 52, transform: 'translateX(-50%)' },
+    { top: '62px', left: '18%', size: 36 },
+    { top: '64px', right: '18%', size: 36 },
+    { top: '78px', left: '30%', size: 34 },
+    { top: '78px', right: '30%', size: 34 },
+    { top: '96px', left: '8%', size: 32 },
+    { top: '96px', right: '8%', size: 32 },
   ];
 
   const FolkFlowerSmall = ({ style }: { style: React.CSSProperties }) => (
@@ -258,15 +263,19 @@ function App() {
       style={{ position: 'absolute', ...style }}
     >
       <circle cx="60" cy="60" r="10" fill={palette.blue} />
-      <circle cx="60" cy="24" r="14" fill={palette.red} />
-      <circle cx="60" cy="96" r="14" fill={palette.red} />
-      <circle cx="24" cy="60" r="14" fill={palette.red} />
-      <circle cx="96" cy="60" r="14" fill={palette.red} />
-      <circle cx="38" cy="38" r="8" fill={palette.lemon} />
-      <circle cx="82" cy="38" r="8" fill={palette.lemon} />
-      <circle cx="38" cy="82" r="8" fill={palette.lemon} />
-      <circle cx="82" cy="82" r="8" fill={palette.lemon} />
-      <circle cx="60" cy="60" r="4" fill={palette.cream} />
+      <circle cx="60" cy="18" r="16" fill={palette.red} />
+      <circle cx="60" cy="102" r="16" fill={palette.red} />
+      <circle cx="18" cy="60" r="16" fill={palette.red} />
+      <circle cx="102" cy="60" r="16" fill={palette.red} />
+      <circle cx="32" cy="32" r="12" fill={palette.lemon} />
+      <circle cx="88" cy="32" r="12" fill={palette.lemon} />
+      <circle cx="32" cy="88" r="12" fill={palette.lemon} />
+      <circle cx="88" cy="88" r="12" fill={palette.lemon} />
+      <circle cx="60" cy="38" r="8" fill={palette.cream} />
+      <circle cx="60" cy="82" r="8" fill={palette.cream} />
+      <circle cx="38" cy="60" r="8" fill={palette.cream} />
+      <circle cx="82" cy="60" r="8" fill={palette.cream} />
+      <circle cx="60" cy="60" r="5" fill={palette.blueSoft} />
     </svg>
   );
 
@@ -672,71 +681,125 @@ function App() {
         <div className="max-w-md mx-auto" style={{ maxWidth: '100%', paddingLeft: '1.5rem', paddingRight: '1.5rem' }}>
           <SectionHeading title="Об авторе" />
           <SectionLead text="Личное сопровождение, тёплая атмосфера и опыт, проверенный годами." />
-          <div className="flex flex-col items-center mb-10" style={{ marginBottom: '2.5rem' }}>
-            <div
-              className="w-40 h-40 rounded-full border-4 border-folk-red overflow-hidden mb-6 shadow-lg"
-              style={{ width: '10rem', height: '10rem', borderColor: palette.red }}
-            >
-              <img
-                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=400"
-                alt="Александрия"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <h3
-              className="font-serif text-3xl text-folk-blue mb-3"
-              style={{ fontSize: '2rem', marginBottom: '0.6rem', color: palette.blue }}
-            >
-              Александрия
-            </h3>
-            <p className="text-folk-blue/60 text-sm italic" style={{ fontSize: '0.9rem', color: palette.blueSoft }}>
-              Основательница и куратор авторских маршрутов
-            </p>
-          </div>
           <div
             style={{
-              display: 'flex',
-              justifyContent: 'center',
-              gap: '0.8rem',
-              flexWrap: 'wrap',
-              marginBottom: '2rem',
+              backgroundColor: palette.cream,
+              borderRadius: '26px',
+              padding: '1.6rem',
+              border: '1px solid rgba(184, 61, 63, 0.12)',
+              boxShadow: '0 16px 32px rgba(31, 46, 77, 0.12)',
             }}
           >
-            {[
-              { label: '10+ лет опыта' },
-              { label: 'Комфорт 24/7' },
-              { label: 'Малые группы' },
-            ].map((item) => (
-              <span
-                key={item.label}
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: '0.8rem' }}>
+              <div
                 style={{
-                  padding: '0.45rem 0.9rem',
+                  padding: '0.4rem 0.95rem',
                   borderRadius: '999px',
-                  backgroundColor: palette.lemon,
-                  border: '1px solid rgba(184, 61, 63, 0.15)',
-                  color: palette.blue,
-                  fontSize: '0.78rem',
-                  fontWeight: 600,
+                  backgroundColor: palette.red,
+                  color: palette.white,
+                  fontSize: '0.65rem',
+                  letterSpacing: '0.2em',
+                  textTransform: 'uppercase',
                 }}
               >
-                {item.label}
-              </span>
-            ))}
-          </div>
-          <div style={{ ...contentCardStyle, marginTop: '0.8rem' }}>
-            <div className="space-y-6 text-base leading-relaxed" style={{ fontSize: '1rem', lineHeight: '1.75', color: palette.blueSoft }}>
-              <p>
-                Меня зовут Александрия. Я более 10 лет путешествую и собираю лучшие маршруты,
-                которые помогают женщинам отдыхать красиво и безопасно.
+                Автор и гид
+              </div>
+              <div style={{ position: 'relative', width: '9.5rem', height: '9.5rem' }}>
+                <div
+                  style={{
+                    position: 'absolute',
+                    inset: '-8px',
+                    borderRadius: '999px',
+                    border: `2px dashed ${palette.red}`,
+                    opacity: 0.4,
+                  }}
+                />
+                <div
+                  style={{
+                    position: 'absolute',
+                    inset: '0',
+                    borderRadius: '999px',
+                    overflow: 'hidden',
+                    border: `4px solid ${palette.red}`,
+                    boxShadow: '0 12px 26px rgba(184, 61, 63, 0.25)',
+                    backgroundColor: palette.white,
+                  }}
+                >
+                  <img
+                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=400"
+                    alt="Александрия"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                  />
+                </div>
+              </div>
+              <h3 style={{ margin: 0, fontSize: '2rem', color: palette.blue, fontFamily: 'Georgia, "Times New Roman", serif' }}>
+                Александрия
+              </h3>
+              <p style={{ margin: 0, color: palette.blueSoft, fontSize: '0.9rem' }}>
+                Основательница и куратор авторских маршрутов
               </p>
-              <p>
-                Я верю, что каждая женщина заслуживает путешествия, где всё продумано: от отеля
-                до впечатлений. Поэтому наши туры — это забота, эстетика и вдохновение.
+            </div>
+
+            <div style={{ display: 'grid', gap: '0.7rem', marginTop: '1.4rem' }}>
+              {[
+                { icon: <Star size={18} />, text: '10+ лет опыта в авторских турах' },
+                { icon: <Heart size={18} />, text: 'Мягкий ритм, забота и безопасная логистика' },
+                { icon: <MapPin size={18} />, text: 'Маршруты с русскими традициями и ремёслами' },
+              ].map((item) => (
+                <div
+                  key={item.text}
+                  style={{
+                    backgroundColor: palette.white,
+                    borderRadius: '16px',
+                    padding: '0.85rem 1rem',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.7rem',
+                    border: '1px solid rgba(184, 61, 63, 0.12)',
+                    color: palette.blue,
+                    fontWeight: 600,
+                    fontSize: '0.92rem',
+                  }}
+                >
+                  <span style={{ color: palette.red }}>{item.icon}</span>
+                  <span>{item.text}</span>
+                </div>
+              ))}
+            </div>
+
+            <div
+              style={{
+                marginTop: '1.3rem',
+                backgroundColor: palette.white,
+                borderRadius: '18px',
+                padding: '1.2rem',
+                border: '1px solid rgba(184, 61, 63, 0.08)',
+                color: palette.blueSoft,
+                lineHeight: '1.7',
+                fontSize: '0.98rem',
+              }}
+            >
+              <p style={{ margin: 0, marginBottom: '0.8rem' }}>
+                В моих турах важна атмосфера: мы путешествуем красиво, спокойно и по‑настоящему.
+                Всё организовано так, чтобы вы могли наслаждаться маршрутом и собой.
               </p>
-              <p>
-                В каждой поездке я делюсь любовью к традициям — мы открываем ремёсла, кухни
-                и местные легенды, чтобы чувствовать живую историю места.
+              <p style={{ margin: 0 }}>
+                Я лично курирую каждую поездку и остаюсь рядом — от первого сообщения до последнего дня тура.
               </p>
+            </div>
+
+            <div
+              style={{
+                marginTop: '1rem',
+                padding: '0.85rem 1rem',
+                borderRadius: '16px',
+                background: 'linear-gradient(90deg, rgba(255, 244, 176, 0.8), rgba(255, 253, 247, 1))',
+                color: palette.blue,
+                fontStyle: 'italic',
+                fontSize: '0.95rem',
+              }}
+            >
+              «Путешествия — это мягкая перезагрузка души и сердца».
             </div>
           </div>
         </div>
@@ -1174,6 +1237,20 @@ function App() {
               boxShadow: '0 16px 28px rgba(10, 20, 36, 0.35)',
             }}
           >
+            <div
+              style={{
+                padding: '0.8rem 1rem',
+                borderRadius: '14px',
+                backgroundColor: 'rgba(255, 244, 176, 0.12)',
+                color: 'rgba(255, 253, 247, 0.9)',
+                fontSize: '0.85rem',
+                lineHeight: '1.6',
+                marginBottom: '0.9rem',
+                fontStyle: 'italic',
+              }}
+            >
+              «Путешествие — это разговор с миром и с собой».
+            </div>
             <div style={{ display: 'flex', justifyContent: 'center', gap: '0.6rem', marginBottom: '0.9rem' }}>
               {[
                 { href: 'https://instagram.com/matreshkico', icon: <Instagram size={15} />, label: 'Instagram' },
@@ -1220,6 +1297,9 @@ function App() {
             >
               Политика конфиденциальности
             </a>
+            <p style={{ marginTop: '0.75rem', color: 'rgba(255, 253, 247, 0.65)', fontSize: '0.7rem' }}>
+              Matreshki&Co — женские путешествия с русской душой
+            </p>
           </div>
         </div>
       </footer>
