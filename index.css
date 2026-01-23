@@ -124,6 +124,11 @@ body {
   border-radius: 18px;
   border: 2px solid rgba(154, 27, 33, 0.7);
   box-shadow: 0 18px 30px rgba(20, 20, 36, 0.18);
+  background-image:
+    radial-gradient(rgba(60, 48, 40, 0.12) 0.8px, transparent 0.9px),
+    radial-gradient(rgba(60, 48, 40, 0.08) 0.6px, transparent 0.8px);
+  background-size: 18px 18px, 12px 12px;
+  background-position: 0 0, 6px 8px;
 }
 
 .rug-paper-sheet::before {
@@ -153,37 +158,45 @@ body {
 
 .rug-paper-tear {
   position: absolute;
-  left: -10px;
-  top: 28px;
-  width: 18px;
-  height: calc(100% - 56px);
+  left: -12px;
+  top: 22px;
+  width: 22px;
+  height: calc(100% - 44px);
   background: #F4EBDD;
   border-left: 2px solid rgba(154, 27, 33, 0.7);
   clip-path: polygon(
     100% 0%,
-    45% 4%,
-    95% 8%,
-    40% 12%,
-    98% 16%,
-    42% 20%,
-    96% 24%,
-    38% 28%,
-    98% 32%,
-    40% 36%,
-    96% 40%,
-    36% 44%,
+    30% 3%,
+    95% 6%,
+    22% 9%,
+    98% 12%,
+    28% 15%,
+    96% 18%,
+    18% 21%,
+    98% 24%,
+    26% 27%,
+    96% 30%,
+    16% 33%,
+    98% 36%,
+    24% 39%,
+    96% 42%,
+    14% 45%,
     98% 48%,
-    40% 52%,
-    96% 56%,
-    38% 60%,
-    98% 64%,
-    42% 68%,
-    96% 72%,
-    38% 76%,
-    98% 80%,
-    42% 84%,
-    96% 88%,
-    40% 92%,
+    26% 51%,
+    96% 54%,
+    16% 57%,
+    98% 60%,
+    24% 63%,
+    96% 66%,
+    14% 69%,
+    98% 72%,
+    26% 75%,
+    96% 78%,
+    16% 81%,
+    98% 84%,
+    24% 87%,
+    96% 90%,
+    20% 93%,
     100% 96%,
     100% 100%,
     0% 100%,

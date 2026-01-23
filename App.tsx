@@ -856,7 +856,7 @@ function App() {
         ref={whyUsRef}
         id="why-us"
         className="bg-folk-red px-6"
-        style={{ backgroundColor: palette.cream, paddingTop: '4.2rem', paddingBottom: '4.2rem', paddingLeft: '1rem', paddingRight: '1rem' }}
+        style={{ backgroundColor: palette.cream, paddingTop: '4.2rem', paddingBottom: '4.2rem', paddingLeft: 0, paddingRight: '1rem' }}
       >
         <div
           className="max-w-md mx-auto"
@@ -869,7 +869,7 @@ function App() {
             boxShadow: '0 18px 32px rgba(20, 20, 36, 0.15)',
           }}
         >
-          <div className="rug-strip-left" style={{ marginLeft: '-14px' }} />
+          <div className="rug-strip-left" style={{ marginLeft: '-24px' }} />
           <div
             className="rug-paper-sheet"
             style={{
