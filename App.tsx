@@ -198,6 +198,9 @@ function App() {
     border: '1px solid rgba(184, 61, 63, 0.08)',
   } as const;
 
+  const floralPattern =
+    'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22120%22 height=%22120%22 viewBox=%220 0 120 120%22%3E%3Crect width=%22120%22 height=%22120%22 fill=%22%23FFF4B0%22/%3E%3Cg fill=%22%23B83D3F%22 fill-opacity=%220.9%22%3E%3Ccircle cx=%2220%22 cy=%2220%22 r=%228%22/%3E%3Ccircle cx=%2250%22 cy=%2225%22 r=%226%22/%3E%3Ccircle cx=%2285%22 cy=%2218%22 r=%227%22/%3E%3Ccircle cx=%2210%22 cy=%2265%22 r=%227%22/%3E%3Ccircle cx=%2245%22 cy=%2260%22 r=%229%22/%3E%3Ccircle cx=%2280%22 cy=%2265%22 r=%226%22/%3E%3Ccircle cx=%2220%22 cy=%22100%22 r=%226%22/%3E%3Ccircle cx=%2260%22 cy=%2295%22 r=%227%22/%3E%3Ccircle cx=%2295%22 cy=%22105%22 r=%225%22/%3E%3C/g%3E%3Cg fill=%22%231F2E4D%22 fill-opacity=%220.75%22%3E%3Ccircle cx=%2235%22 cy=%2235%22 r=%223%22/%3E%3Ccircle cx=%2270%22 cy=%2238%22 r=%223%22/%3E%3Ccircle cx=%22100%22 cy=%2245%22 r=%223%22/%3E%3Ccircle cx=%2230%22 cy=%2275%22 r=%223%22/%3E%3Ccircle cx=%2270%22 cy=%2280%22 r=%223%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E';
+
   console.log('[APP] Render check - error:', error, 'isLoading:', isLoading, 'isMobile:', isMobile);
   
   // Показываем ошибку, если она есть
@@ -264,15 +267,30 @@ function App() {
           maxWidth: '100%',
           paddingLeft: '1.25rem',
           paddingRight: '1.25rem',
-          paddingTop: '4.5rem',
+          paddingTop: '0',
           paddingBottom: '2.5rem',
           background: `linear-gradient(180deg, ${palette.lemon} 0%, ${palette.cream} 70%)`,
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
           borderBottom: '1px solid rgba(184, 61, 63, 0.12)',
+          textAlign: 'center',
         }}
       >
+        <div
+          style={{
+            width: '100%',
+            height: '190px',
+            backgroundColor: palette.lemon,
+            backgroundImage: `url("${floralPattern}")`,
+            backgroundRepeat: 'repeat',
+            backgroundSize: '120px 120px',
+            borderBottomLeftRadius: '32px',
+            borderBottomRightRadius: '32px',
+            boxShadow: 'inset 0 -12px 18px rgba(184, 61, 63, 0.08)',
+            marginBottom: '1.75rem',
+          }}
+        />
         <div
           style={{
             backgroundColor: palette.red,
