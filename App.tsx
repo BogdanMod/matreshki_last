@@ -111,6 +111,7 @@ function App() {
   const [isMobile] = useState<boolean>(initialMobile);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [showBackToTop, setShowBackToTop] = useState(false);
   
   // Перехватываем ошибки
   useEffect(() => {
@@ -145,6 +146,17 @@ function App() {
       console.log('[APP] Cleaning up timer');
       clearTimeout(timer);
     };
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowBackToTop(window.scrollY > 400);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const aboutRef = useRef<HTMLDivElement>(null);
@@ -343,6 +355,34 @@ function App() {
       style={{ backgroundColor: palette.cream, color: palette.blue, width: '100%', minHeight: '100vh' }}
     >
       <BurgerMenu onNavigate={scrollToSection} />
+      <button
+        type="button"
+        aria-label="Наверх"
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        style={{
+          position: 'fixed',
+          right: '1rem',
+          bottom: '1.25rem',
+          width: '42px',
+          height: '42px',
+          borderRadius: '999px',
+          border: `1px solid ${palette.redDark}`,
+          backgroundColor: palette.red,
+          color: palette.white,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          boxShadow: '0 10px 20px rgba(184, 61, 63, 0.35)',
+          cursor: 'pointer',
+          opacity: showBackToTop ? 1 : 0,
+          transform: showBackToTop ? 'translateY(0)' : 'translateY(12px)',
+          pointerEvents: showBackToTop ? 'auto' : 'none',
+          transition: 'opacity 0.2s ease, transform 0.2s ease',
+          zIndex: 1001,
+        }}
+      >
+        ↑
+      </button>
       
       {/* Hero Section */}
       <div
