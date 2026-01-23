@@ -201,7 +201,7 @@ function App() {
     <div style={{ textAlign: 'center', marginBottom: '2.25rem' }}>
       <h2
         style={{
-          fontFamily: 'Georgia, "Times New Roman", serif',
+          fontFamily: 'var(--font-heading)',
           fontSize: '1.75rem',
           letterSpacing: '0.18em',
           textTransform: 'uppercase',
@@ -293,8 +293,8 @@ function App() {
       {/* Flower center */}
       <circle cx="60" cy="60" r="14" fill={palette.lemon} />
       <circle cx="60" cy="60" r="6" fill={palette.blue} />
-    </svg>
-  );
+  </svg>
+);
 
   console.log('[APP] Render check - error:', error, 'isLoading:', isLoading, 'isMobile:', isMobile);
   
@@ -468,17 +468,17 @@ function App() {
         >
           <div style={{ transform: 'scale(0.92)' }}>
             <LogoWithBerries />
-          </div>
+           </div>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
             <h1
               style={{
-                fontFamily: 'Georgia, "Times New Roman", serif',
-                fontSize: '2rem',
-                fontWeight: 700,
+                fontFamily: 'var(--font-brand)',
+                fontSize: '2.2rem',
+                fontWeight: 400,
                 color: palette.blue,
                 margin: 0,
-                lineHeight: '1.2',
-                letterSpacing: '0.02em',
+                lineHeight: '1.1',
+                letterSpacing: '0.01em',
                 textAlign: 'center',
                 marginLeft: '-6px',
               }}
@@ -487,8 +487,8 @@ function App() {
             </h1>
             <p
               style={{
-                fontFamily: '"Brush Script MT", "Apple Chancery", cursive',
-                fontSize: '1.6rem',
+              fontFamily: 'var(--font-heading)',
+              fontSize: '1.4rem',
                 color: palette.red,
                 margin: 0,
                 marginTop: '0.25rem',
@@ -498,7 +498,7 @@ function App() {
             </p>
             <p
               style={{
-                fontFamily: 'Arial, Helvetica, sans-serif',
+              fontFamily: 'var(--font-body)',
                 fontSize: '0.65rem',
                 fontWeight: 700,
                 letterSpacing: '0.2em',
@@ -510,7 +510,7 @@ function App() {
             >
               Women's travel company
             </p>
-          </div>
+           </div>
         </div>
 
         <p
@@ -782,8 +782,8 @@ function App() {
               </h3>
               <p style={{ margin: 0, color: palette.blueSoft, fontSize: '0.9rem' }}>
                 Основательница и куратор авторских маршрутов
-              </p>
-            </div>
+               </p>
+             </div>
 
             <div style={{ display: 'grid', gap: '0.7rem', marginTop: '1.4rem' }}>
               {[
@@ -830,9 +830,9 @@ function App() {
               </p>
               <p style={{ margin: 0 }}>
                 Я лично курирую каждую поездку и остаюсь рядом — от первого сообщения до последнего дня тура.
-              </p>
-            </div>
-
+             </p>
+           </div>
+           
             <div
               style={{
                 marginTop: '1rem',
@@ -965,18 +965,26 @@ function App() {
                 >
                   <CheckCircle size={18} />
                 </div>
-                <h3 style={{ margin: 0, fontSize: '1.05rem', color: palette.blue, letterSpacing: '0.04em' }}>
+                <h3
+                  style={{
+                    margin: 0,
+                    fontSize: '1.05rem',
+                    color: palette.blue,
+                    letterSpacing: '0.04em',
+                    fontFamily: 'var(--font-heading)',
+                  }}
+                >
                   Для вас, если
                 </h3>
               </div>
               <div style={{ display: 'grid', gap: '0.8rem' }}>
                 {[
-                  'Ищете спокойный и красивый отдых в женской компании',
-                  'Цените заботу, комфорт и внимательные детали',
-                  'Хотите вдохновения без суеты и плотных графиков',
-                ].map((text) => (
+                  { text: 'Ищете спокойный и красивый отдых в женской компании', icon: <Heart size={16} /> },
+                  { text: 'Цените заботу, комфорт и внимательные детали', icon: <Star size={16} /> },
+                  { text: 'Хотите вдохновения без суеты и плотных графиков', icon: <MapPin size={16} /> },
+                ].map((item) => (
                   <div
-                    key={text}
+                    key={item.text}
                     style={{
                       backgroundColor: palette.white,
                       borderRadius: '16px',
@@ -990,12 +998,12 @@ function App() {
                       alignItems: 'flex-start',
                     }}
                   >
-                    <span style={{ color: palette.red, fontWeight: 700 }}>•</span>
-                    <span>{text}</span>
+                    <span style={{ color: palette.red, marginTop: '2px' }}>{item.icon}</span>
+                    <span>{item.text}</span>
                   </div>
                 ))}
-              </div>
-            </div>
+        </div>
+      </div>
 
             <div
               style={{
@@ -1021,18 +1029,26 @@ function App() {
                 >
                   <XCircle size={18} />
                 </div>
-                <h3 style={{ margin: 0, fontSize: '1.05rem', color: palette.blue, letterSpacing: '0.04em' }}>
+                <h3
+                  style={{
+                    margin: 0,
+                    fontSize: '1.05rem',
+                    color: palette.blue,
+                    letterSpacing: '0.04em',
+                    fontFamily: 'var(--font-heading)',
+                  }}
+                >
                   Возможно, не подойдём
                 </h3>
               </div>
               <div style={{ display: 'grid', gap: '0.8rem' }}>
                 {[
-                  'Нужен самый бюджетный формат без сервиса',
-                  'Предпочитаете полностью самостоятельные поездки',
-                  'Не готовы к общению и совместным активностям',
-                ].map((text) => (
+                  { text: 'Нужен самый бюджетный формат без сервиса', icon: <XCircle size={16} /> },
+                  { text: 'Предпочитаете полностью самостоятельные поездки', icon: <XCircle size={16} /> },
+                  { text: 'Не готовы к общению и совместным активностям', icon: <XCircle size={16} /> },
+                ].map((item) => (
                   <div
-                    key={text}
+                    key={item.text}
                     style={{
                       backgroundColor: palette.cream,
                       borderRadius: '16px',
@@ -1046,14 +1062,14 @@ function App() {
                       alignItems: 'flex-start',
                     }}
                   >
-                    <span style={{ color: 'rgba(31, 46, 77, 0.5)', fontWeight: 700 }}>•</span>
-                    <span>{text}</span>
+                    <span style={{ color: 'rgba(31, 46, 77, 0.55)', marginTop: '2px' }}>{item.icon}</span>
+                    <span>{item.text}</span>
                   </div>
                 ))}
               </div>
             </div>
           </div>
-        </div>
+      </div>
       </section>
 
       <SectionDivider />
@@ -1245,7 +1261,7 @@ function App() {
                   style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
                   loading="lazy"
                 />
-              </div>
+             </div>
             ))}
           </div>
         </div>
@@ -1388,7 +1404,7 @@ function App() {
                   {item.icon}
                 </a>
               ))}
-            </div>
+             </div>
             <p style={{ margin: 0, color: 'rgba(255, 253, 247, 0.85)', fontSize: '0.78rem', letterSpacing: '0.08em' }}>
               Основано в 2023
             </p>
